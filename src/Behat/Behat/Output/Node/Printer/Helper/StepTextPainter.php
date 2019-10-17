@@ -11,7 +11,7 @@
 namespace Behat\Behat\Output\Node\Printer\Helper;
 
 use Behat\Behat\Definition\Definition;
-use Behat\Behat\Definition\Pattern\PatternTransformer;
+use Behat\Behat\Definition\Pattern\SimplePatternTransformer;
 use Behat\Testwork\Tester\Result\TestResult;
 
 /**
@@ -22,7 +22,7 @@ use Behat\Testwork\Tester\Result\TestResult;
 final class StepTextPainter
 {
     /**
-     * @var PatternTransformer
+     * @var SimplePatternTransformer
      */
     private $patternTransformer;
     /**
@@ -33,10 +33,10 @@ final class StepTextPainter
     /**
      * Initializes painter.
      *
-     * @param PatternTransformer      $patternTransformer
+     * @param SimplePatternTransformer      $patternTransformer
      * @param ResultToStringConverter $resultConverter
      */
-    public function __construct(PatternTransformer $patternTransformer, ResultToStringConverter $resultConverter)
+    public function __construct(SimplePatternTransformer $patternTransformer, ResultToStringConverter $resultConverter)
     {
         $this->patternTransformer = $patternTransformer;
         $this->resultConverter = $resultConverter;

@@ -18,7 +18,7 @@ use Behat\Gherkin\Node\StepNode;
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */
-final class AggregateSnippet
+final class AggregateSnippet implements SimpleAggregateSnippet
 {
     /**
      * @var Snippet[]

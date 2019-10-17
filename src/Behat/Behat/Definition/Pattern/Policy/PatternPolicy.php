@@ -11,12 +11,12 @@
 namespace Behat\Behat\Definition\Pattern\Policy;
 
 use Behat\Behat\Definition\Pattern\Pattern;
-use Behat\Behat\Definition\Pattern\PatternTransformer;
+use Behat\Behat\Definition\Pattern\SimplePatternTransformer;
 
 /**
  * Defines a way to handle custom definition patterns.
  *
- * @see PatternTransformer
+ * @see SimplePatternTransformer
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */

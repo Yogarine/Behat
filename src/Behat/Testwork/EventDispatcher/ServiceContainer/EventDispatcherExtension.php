@@ -12,7 +12,8 @@ namespace Behat\Testwork\EventDispatcher\ServiceContainer;
 
 use Behat\Testwork\Cli\ServiceContainer\CliExtension;
 use Behat\Testwork\ServiceContainer\Extension;
-use Behat\Testwork\ServiceContainer\ExtensionManager;
+use Behat\Testwork\ServiceContainer\ExtensionActivationManager;
+use Behat\Testwork\ServiceContainer\TaggedServiceProcessor;
 use Behat\Testwork\ServiceContainer\ServiceProcessor;
 use Behat\Testwork\Tester\ServiceContainer\TesterExtension;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
@@ -38,16 +39,16 @@ class EventDispatcherExtension implements Extension
     public const SUBSCRIBER_TAG = 'event_dispatcher.subscriber';
 
     /**
-     * @var ServiceProcessor
+     * @var TaggedServiceProcessor
      */
     protected $processor;
 
     /**
      * Initializes extension.
      *
-     * @param null|ServiceProcessor $processor
+     * @param null|TaggedServiceProcessor $processor
      */
-    public function __construct(ServiceProcessor $processor = null)
+    public function __construct(TaggedServiceProcessor $processor = null)
     {
         $this->processor = $processor ? : new ServiceProcessor();
     }
@@ -63,7 +64,7 @@ class EventDispatcherExtension implements Extension
     /**
      * {@inheritdoc}
      */
-    public function initialize(ExtensionManager $extensionManager)
+    public function initialize(ExtensionActivationManager $extensionManager)
     {
     }
 

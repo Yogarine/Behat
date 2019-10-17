@@ -10,7 +10,7 @@
 
 namespace Behat\Behat\Context\Snippet\Appender;
 
-use Behat\Behat\Snippet\AggregateSnippet;
+use Behat\Behat\Snippet\SimpleAggregateSnippet;
 use Behat\Behat\Snippet\Appender\SnippetAppender;
 use Behat\Testwork\Filesystem\FilesystemLogger;
 use ReflectionClass;
@@ -45,7 +45,7 @@ final class ContextSnippetAppender implements SnippetAppender
     /**
      * {@inheritdoc}
      */
-    public function supportsSnippet(AggregateSnippet $snippet)
+    public function supportsSnippet(SimpleAggregateSnippet $snippet)
     {
         return 'context' === $snippet->getType();
     }
@@ -53,7 +53,7 @@ final class ContextSnippetAppender implements SnippetAppender
     /**
      * {@inheritdoc}
      */
-    public function appendSnippet(AggregateSnippet $snippet)
+    public function appendSnippet(SimpleAggregateSnippet $snippet)
     {
         foreach ($snippet->getTargets() as $contextClass) {
             $reflection = new ReflectionClass($contextClass);
@@ -111,10 +111,10 @@ final class ContextSnippetAppender implements SnippetAppender
     /**
      * Logs snippet addition to the provided path (if logger is given).
      *
-     * @param AggregateSnippet $snippet
+     * @param SimpleAggregateSnippet $snippet
      * @param string           $path
      */
-    private function logSnippetAddition(AggregateSnippet $snippet, $path)
+    private function logSnippetAddition(SimpleAggregateSnippet $snippet, $path)
     {
         if (!$this->logger) {
             return;

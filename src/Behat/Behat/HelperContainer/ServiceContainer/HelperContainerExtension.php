@@ -14,7 +14,8 @@ use Behat\Behat\Context\ServiceContainer\ContextExtension;
 use Behat\Behat\HelperContainer\Exception\WrongServicesConfigurationException;
 use Behat\Testwork\Call\ServiceContainer\CallExtension;
 use Behat\Testwork\ServiceContainer\Extension;
-use Behat\Testwork\ServiceContainer\ExtensionManager;
+use Behat\Testwork\ServiceContainer\ExtensionActivationManager;
+use Behat\Testwork\ServiceContainer\TaggedServiceProcessor;
 use Behat\Testwork\ServiceContainer\ServiceProcessor;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -43,9 +44,9 @@ final class HelperContainerExtension implements Extension
     /**
      * Initializes compiler pass.
      *
-     * @param null|ServiceProcessor $processor
+     * @param null|TaggedServiceProcessor $processor
      */
-    public function __construct(ServiceProcessor $processor = null)
+    public function __construct(TaggedServiceProcessor $processor = null)
     {
         $this->processor = $processor ? : new ServiceProcessor();
     }
@@ -61,7 +62,7 @@ final class HelperContainerExtension implements Extension
     /**
      * {@inheritdoc}
      */
-    public function initialize(ExtensionManager $extensionManager)
+    public function initialize(ExtensionActivationManager $extensionManager)
     {
     }
 

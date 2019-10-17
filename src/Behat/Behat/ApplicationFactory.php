@@ -34,6 +34,7 @@ use Behat\Testwork\Filesystem\ServiceContainer\FilesystemExtension;
 use Behat\Testwork\Ordering\ServiceContainer\OrderingExtension;
 use Behat\Testwork\Output\ServiceContainer\Formatter\FormatterFactory;
 use Behat\Testwork\Output\ServiceContainer\OutputExtension;
+use Behat\Testwork\ServiceContainer\TaggedServiceProcessor;
 use Behat\Testwork\ServiceContainer\ServiceProcessor;
 use Behat\Testwork\Specification\ServiceContainer\SpecificationExtension;
 use Behat\Testwork\Suite\ServiceContainer\SuiteExtension;
@@ -135,11 +136,11 @@ final class ApplicationFactory extends BaseFactory
     /**
      * Returns default formatter factories.
      *
-     * @param ServiceProcessor $processor
+     * @param TaggedServiceProcessor $processor
      *
      * @return FormatterFactory[]
      */
-    private function getDefaultFormatterFactories(ServiceProcessor $processor)
+    private function getDefaultFormatterFactories(TaggedServiceProcessor $processor)
     {
         return array(
             new PrettyFormatterFactory($processor),

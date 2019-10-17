@@ -39,9 +39,9 @@ interface Extension extends CompilerPassInterface
      * to hook into the configuration of other extensions providing such an
      * extension point.
      *
-     * @param ExtensionManager $extensionManager
+     * @param ExtensionActivationManager $extensionManager
      */
-    public function initialize(ExtensionManager $extensionManager);
+    public function initialize(ExtensionActivationManager $extensionManager);
 
     /**
      * Setups configuration for the extension.

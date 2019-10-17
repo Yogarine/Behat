@@ -13,7 +13,8 @@ namespace Behat\Testwork\Ordering\ServiceContainer;
 use Behat\Testwork\Cli\ServiceContainer\CliExtension;
 use Behat\Testwork\EventDispatcher\ServiceContainer\EventDispatcherExtension;
 use Behat\Testwork\ServiceContainer\Extension;
-use Behat\Testwork\ServiceContainer\ExtensionManager;
+use Behat\Testwork\ServiceContainer\ExtensionActivationManager;
+use Behat\Testwork\ServiceContainer\TaggedServiceProcessor;
 use Behat\Testwork\ServiceContainer\ServiceProcessor;
 use Behat\Testwork\Tester\ServiceContainer\TesterExtension;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
@@ -31,16 +32,16 @@ final class OrderingExtension implements Extension
     public const ORDERER_TAG = 'tester.orderer';
 
     /**
-     * @var ServiceProcessor
+     * @var TaggedServiceProcessor
      */
     private $processor;
 
     /**
      * Initializes extension.
      *
-     * @param null|ServiceProcessor $processor
+     * @param null|TaggedServiceProcessor $processor
      */
-    public function __construct(ServiceProcessor $processor = null)
+    public function __construct(TaggedServiceProcessor $processor = null)
     {
         $this->processor = $processor ?: new ServiceProcessor();
     }
@@ -80,9 +81,9 @@ final class OrderingExtension implements Extension
      * to hook into the configuration of other extensions providing such an
      * extension point.
      *
-     * @param ExtensionManager $extensionManager
+     * @param ExtensionActivationManager $extensionManager
      */
-    public function initialize(ExtensionManager $extensionManager)
+    public function initialize(ExtensionActivationManager $extensionManager)
     {
     }
 

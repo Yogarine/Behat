@@ -16,7 +16,8 @@ use Behat\Behat\Gherkin\ServiceContainer\GherkinExtension;
 use Behat\Testwork\Cli\ServiceContainer\CliExtension;
 use Behat\Testwork\Environment\ServiceContainer\EnvironmentExtension;
 use Behat\Testwork\ServiceContainer\Extension;
-use Behat\Testwork\ServiceContainer\ExtensionManager;
+use Behat\Testwork\ServiceContainer\ExtensionActivationManager;
+use Behat\Testwork\ServiceContainer\TaggedServiceProcessor;
 use Behat\Testwork\ServiceContainer\ServiceProcessor;
 use Behat\Testwork\Suite\ServiceContainer\SuiteExtension;
 use Behat\Testwork\Translator\ServiceContainer\TranslatorExtension;
@@ -48,16 +49,16 @@ final class DefinitionExtension implements Extension
     public const PATTERN_POLICY_TAG = 'definition.pattern_policy';
 
     /**
-     * @var ServiceProcessor
+     * @var TaggedServiceProcessor
      */
     private $processor;
 
     /**
      * Initializes compiler pass.
      *
-     * @param null|ServiceProcessor $processor
+     * @param null|TaggedServiceProcessor $processor
      */
-    public function __construct(ServiceProcessor $processor = null)
+    public function __construct(TaggedServiceProcessor $processor = null)
     {
         $this->processor = $processor ? : new ServiceProcessor();
     }
@@ -73,7 +74,7 @@ final class DefinitionExtension implements Extension
     /**
      * {@inheritdoc}
      */
-    public function initialize(ExtensionManager $extensionManager)
+    public function initialize(ExtensionActivationManager $extensionManager)
     {
     }
 

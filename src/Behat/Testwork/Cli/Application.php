@@ -13,7 +13,7 @@ namespace Behat\Testwork\Cli;
 use Behat\Testwork\ServiceContainer\Configuration\ConfigurationLoader;
 use Behat\Testwork\ServiceContainer\ContainerLoader;
 use Behat\Testwork\ServiceContainer\Exception\ConfigurationLoadingException;
-use Behat\Testwork\ServiceContainer\ExtensionManager;
+use Behat\Testwork\ServiceContainer\ExtensionActivationManager;
 use Symfony\Component\Console\Application as BaseApplication;
 use Symfony\Component\Console\Command\Command as SymfonyCommand;
 use Symfony\Component\Console\Input\ArrayInput;
@@ -36,7 +36,7 @@ final class Application extends BaseApplication
      */
     private $configurationLoader;
     /**
-     * @var ExtensionManager
+     * @var ExtensionActivationManager
      */
     private $extensionManager;
 
@@ -46,9 +46,9 @@ final class Application extends BaseApplication
      * @param string              $name
      * @param string              $version
      * @param ConfigurationLoader $configLoader
-     * @param ExtensionManager    $extensionManager
+     * @param ExtensionActivationManager    $extensionManager
      */
-    public function __construct($name, $version, ConfigurationLoader $configLoader, ExtensionManager $extensionManager)
+    public function __construct($name, $version, ConfigurationLoader $configLoader, ExtensionActivationManager $extensionManager)
     {
         putenv('COLUMNS=9999');
 

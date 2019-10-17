@@ -10,7 +10,7 @@
 
 namespace Behat\Behat\Snippet\Printer;
 
-use Behat\Behat\Snippet\AggregateSnippet;
+use Behat\Behat\Snippet\SimpleAggregateSnippet;
 use Behat\Gherkin\Node\StepNode;
 
 /**
@@ -24,7 +24,7 @@ interface SnippetPrinter
      * Prints snippets of the specific target.
      *
      * @param string             $targetName
-     * @param AggregateSnippet[] $snippets
+     * @param SimpleAggregateSnippet[] $snippets
      */
     public function printSnippets($targetName, array $snippets);
 

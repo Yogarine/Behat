@@ -12,9 +12,8 @@ namespace Behat\Behat\Context\Snippet\Generator;
 
 use Behat\Behat\Context\Environment\ContextEnvironment;
 use Behat\Behat\Context\Snippet\ContextSnippet;
-use Behat\Behat\Definition\Pattern\PatternTransformer;
+use Behat\Behat\Definition\Pattern\SimplePatternTransformer;
 use Behat\Behat\Snippet\Exception\EnvironmentSnippetGenerationException;
-use Behat\Behat\Snippet\Generator\SnippetGenerator;
 use Behat\Gherkin\Node\PyStringNode;
 use Behat\Gherkin\Node\StepNode;
 use Behat\Gherkin\Node\TableNode;
@@ -26,7 +25,7 @@ use ReflectionClass;
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */
-final class ContextSnippetGenerator implements SnippetGenerator
+final class ContextSnippetGenerator implements IdentifiableSnippetGenerator
 {
     /**
      * @var string[string]
@@ -45,7 +44,7 @@ final class ContextSnippetGenerator implements SnippetGenerator
     }
 TPL;
     /**
-     * @var PatternTransformer
+     * @var SimplePatternTransformer
      */
     private $patternTransformer;
     /**
@@ -60,9 +59,9 @@ TPL;
     /**
      * Initializes snippet generator.
      *
-     * @param PatternTransformer $patternTransformer
+     * @param SimplePatternTransformer $patternTransformer
      */
-    public function __construct(PatternTransformer $patternTransformer)
+    public function __construct(SimplePatternTransformer $patternTransformer)
     {
         $this->patternTransformer = $patternTransformer;
 

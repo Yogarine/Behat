@@ -20,7 +20,7 @@ use Symfony\Component\DependencyInjection\Reference;
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  * @author Christophe Coevoet <stof@notk.org>
  */
-final class ServiceProcessor
+final class ServiceProcessor implements TaggedServiceProcessor
 {
     /**
      * Finds and sorts (by priority) service references by provided tag.

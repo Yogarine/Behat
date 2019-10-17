@@ -17,6 +17,7 @@ use Behat\Behat\Context\Snippet\Generator\ContextSnippetGenerator;
 use Behat\Behat\Context\Snippet\Generator\FixedContextIdentifier;
 use Behat\Behat\Context\Snippet\Generator\FixedPatternIdentifier;
 use Behat\Behat\Context\Snippet\Generator\AggregateContextIdentifier;
+use Behat\Behat\Context\Snippet\Generator\IdentifiableSnippetGenerator;
 use Behat\Behat\Definition\Translator\TranslatorInterface;
 use Behat\Testwork\Cli\Controller;
 use Symfony\Component\Console\Command\Command as SymfonyCommand;
@@ -43,10 +44,10 @@ final class ContextSnippetsController implements Controller
     /**
      * Initialises controller.
      *
-     * @param ContextSnippetGenerator $generator
-     * @param TranslatorInterface     $translator
+     * @param IdentifiableSnippetGenerator $generator
+     * @param TranslatorInterface          $translator
      */
-    public function __construct(ContextSnippetGenerator $generator, TranslatorInterface $translator)
+    public function __construct(IdentifiableSnippetGenerator $generator, TranslatorInterface $translator)
     {
         $this->generator = $generator;
         $this->translator = $translator;

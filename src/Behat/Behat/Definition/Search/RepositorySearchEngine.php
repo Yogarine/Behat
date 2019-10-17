@@ -13,7 +13,7 @@ namespace Behat\Behat\Definition\Search;
 use Behat\Behat\Definition\Definition;
 use Behat\Behat\Definition\DefinitionRepository;
 use Behat\Behat\Definition\Exception\AmbiguousMatchException;
-use Behat\Behat\Definition\Pattern\PatternTransformer;
+use Behat\Behat\Definition\Pattern\SimplePatternTransformer;
 use Behat\Behat\Definition\SearchResult;
 use Behat\Behat\Definition\Translator\DefinitionTranslator;
 use Behat\Gherkin\Node\ArgumentInterface;
@@ -36,7 +36,7 @@ final class RepositorySearchEngine implements SearchEngine
      */
     private $repository;
     /**
-     * @var PatternTransformer
+     * @var SimplePatternTransformer
      */
     private $patternTransformer;
     /**
@@ -52,13 +52,13 @@ final class RepositorySearchEngine implements SearchEngine
      * Initializes search engine.
      *
      * @param DefinitionRepository $repository
-     * @param PatternTransformer   $patternTransformer
+     * @param SimplePatternTransformer   $patternTransformer
      * @param DefinitionTranslator $translator
      * @param ArgumentOrganiser    $argumentOrganiser
      */
     public function __construct(
         DefinitionRepository $repository,
-        PatternTransformer $patternTransformer,
+        SimplePatternTransformer $patternTransformer,
         DefinitionTranslator $translator,
         ArgumentOrganiser $argumentOrganiser
     ) {

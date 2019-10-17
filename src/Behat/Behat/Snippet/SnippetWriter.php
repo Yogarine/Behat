@@ -38,7 +38,7 @@ final class SnippetWriter
     /**
      * Appends snippets to appropriate targets.
      *
-     * @param AggregateSnippet[] $snippets
+     * @param SimpleAggregateSnippet[] $snippets
      */
     public function appendSnippets(array $snippets)
     {
@@ -51,7 +51,7 @@ final class SnippetWriter
      * Prints snippets using provided printer.
      *
      * @param SnippetPrinter     $printer
-     * @param AggregateSnippet[] $snippets
+     * @param SimpleAggregateSnippet[] $snippets
      */
     public function printSnippets(SnippetPrinter $printer, array $snippets)
     {
@@ -102,9 +102,9 @@ final class SnippetWriter
     /**
      * Appends snippet to appropriate targets.
      *
-     * @param AggregateSnippet $snippet
+     * @param SimpleAggregateSnippet $snippet
      */
-    private function appendSnippet(AggregateSnippet $snippet)
+    private function appendSnippet(SimpleAggregateSnippet $snippet)
     {
         foreach ($this->appenders as $appender) {
             if (!$appender->supportsSnippet($snippet)) {

@@ -11,7 +11,7 @@
 namespace Behat\Testwork\Cli;
 
 use Behat\Testwork\ServiceContainer\Configuration\ConfigurationTree;
-use Behat\Testwork\ServiceContainer\ExtensionManager;
+use Behat\Testwork\ServiceContainer\ExtensionActivationManager;
 use Symfony\Component\Config\Definition\Dumper\YamlReferenceDumper;
 use Symfony\Component\Config\Definition\ReferenceDumper;
 use Symfony\Component\Console\Command\Command as BaseCommand;
@@ -26,16 +26,16 @@ use Symfony\Component\Console\Output\OutputInterface;
 final class DumpReferenceCommand extends BaseCommand
 {
     /**
-     * @var ExtensionManager
+     * @var ExtensionActivationManager
      */
     private $extensionManager;
 
     /**
      * Initializes dumper.
      *
-     * @param ExtensionManager $extensionManager
+     * @param ExtensionActivationManager $extensionManager
      */
-    public function __construct(ExtensionManager $extensionManager)
+    public function __construct(ExtensionActivationManager $extensionManager)
     {
         $this->extensionManager = $extensionManager;
 

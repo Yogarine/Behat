@@ -14,7 +14,8 @@ use Behat\Testwork\Cli\ServiceContainer\CliExtension;
 use Behat\Testwork\EventDispatcher\ServiceContainer\EventDispatcherExtension;
 use Behat\Testwork\Output\ServiceContainer\Formatter\FormatterFactory;
 use Behat\Testwork\ServiceContainer\Extension;
-use Behat\Testwork\ServiceContainer\ExtensionManager;
+use Behat\Testwork\ServiceContainer\ExtensionActivationManager;
+use Behat\Testwork\ServiceContainer\TaggedServiceProcessor;
 use Behat\Testwork\ServiceContainer\ServiceProcessor;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -47,7 +48,7 @@ final class OutputExtension implements Extension
      */
     private $factories;
     /**
-     * @var ServiceProcessor
+     * @var TaggedServiceProcessor
      */
     private $processor;
 
@@ -56,9 +57,9 @@ final class OutputExtension implements Extension
      *
      * @param string                $defaultFormatter
      * @param FormatterFactory[]    $formatterFactories
-     * @param null|ServiceProcessor $processor
+     * @param null|TaggedServiceProcessor $processor
      */
-    public function __construct($defaultFormatter, array $formatterFactories, ServiceProcessor $processor = null)
+    public function __construct($defaultFormatter, array $formatterFactories, TaggedServiceProcessor $processor = null)
     {
         $this->defaultFormatter = $defaultFormatter;
         $this->factories = $formatterFactories;
@@ -86,7 +87,7 @@ final class OutputExtension implements Extension
     /**
      * {@inheritdoc}
      */
-    public function initialize(ExtensionManager $extensionManager)
+    public function initialize(ExtensionActivationManager $extensionManager)
     {
     }
 

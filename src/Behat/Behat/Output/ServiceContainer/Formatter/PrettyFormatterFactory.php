@@ -17,6 +17,7 @@ use Behat\Behat\EventDispatcher\Event\ScenarioTested;
 use Behat\Testwork\Exception\ServiceContainer\ExceptionExtension;
 use Behat\Testwork\Output\ServiceContainer\Formatter\FormatterFactory;
 use Behat\Testwork\Output\ServiceContainer\OutputExtension;
+use Behat\Testwork\ServiceContainer\TaggedServiceProcessor;
 use Behat\Testwork\ServiceContainer\ServiceProcessor;
 use Behat\Testwork\Translator\ServiceContainer\TranslatorExtension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -31,7 +32,7 @@ use Symfony\Component\DependencyInjection\Reference;
 class PrettyFormatterFactory implements FormatterFactory
 {
     /**
-     * @var ServiceProcessor
+     * @var TaggedServiceProcessor
      */
     private $processor;
 
@@ -49,9 +50,9 @@ class PrettyFormatterFactory implements FormatterFactory
     /**
      * Initializes extension.
      *
-     * @param null|ServiceProcessor $processor
+     * @param null|TaggedServiceProcessor $processor
      */
-    public function __construct(ServiceProcessor $processor = null)
+    public function __construct(TaggedServiceProcessor $processor = null)
     {
         $this->processor = $processor ? : new ServiceProcessor();
     }

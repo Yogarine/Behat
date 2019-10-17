@@ -11,7 +11,7 @@
 namespace Behat\Behat\Definition\Printer;
 
 use Behat\Behat\Definition\Definition;
-use Behat\Behat\Definition\Pattern\PatternTransformer;
+use Behat\Behat\Definition\Pattern\SimplePatternTransformer;
 use Behat\Behat\Definition\Translator\DefinitionTranslator;
 use Behat\Gherkin\Keywords\KeywordsInterface;
 use Behat\Testwork\Suite\Suite;
@@ -30,7 +30,7 @@ abstract class ConsoleDefinitionPrinter implements DefinitionPrinter
      */
     private $output;
     /**
-     * @var PatternTransformer
+     * @var SimplePatternTransformer
      */
     private $patternTransformer;
     /**
@@ -46,13 +46,13 @@ abstract class ConsoleDefinitionPrinter implements DefinitionPrinter
      * Initializes printer.
      *
      * @param OutputInterface     $output
-     * @param PatternTransformer  $patternTransformer
+     * @param SimplePatternTransformer  $patternTransformer
      * @param DefinitionTranslator $translator
      * @param KeywordsInterface   $keywords
      */
     public function __construct(
         OutputInterface $output,
-        PatternTransformer $patternTransformer,
+        SimplePatternTransformer $patternTransformer,
         DefinitionTranslator $translator,
         KeywordsInterface $keywords
     ) {

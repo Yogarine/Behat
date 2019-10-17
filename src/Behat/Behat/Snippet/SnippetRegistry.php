@@ -30,7 +30,7 @@ final class SnippetRegistry implements SnippetRepository
      */
     private $undefinedSteps = array();
     /**
-     * @var AggregateSnippet[]
+     * @var SimpleAggregateSnippet[]
      */
     private $snippets = array();
     /**
@@ -66,7 +66,7 @@ final class SnippetRegistry implements SnippetRepository
     /**
      * Returns all generated snippets.
      *
-     * @return AggregateSnippet[]
+     * @return SimpleAggregateSnippet[]
      */
     public function getSnippets()
     {

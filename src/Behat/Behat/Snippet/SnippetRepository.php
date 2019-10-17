@@ -20,7 +20,7 @@ interface SnippetRepository
     /**
      * Returns all generated snippets.
      *
-     * @return AggregateSnippet[]
+     * @return SimpleAggregateSnippet[]
      */
     public function getSnippets();
 

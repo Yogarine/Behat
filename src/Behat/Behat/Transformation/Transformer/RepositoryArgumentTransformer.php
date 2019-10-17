@@ -11,7 +11,7 @@
 namespace Behat\Behat\Transformation\Transformer;
 
 use Behat\Behat\Definition\Call\DefinitionCall;
-use Behat\Behat\Definition\Pattern\PatternTransformer;
+use Behat\Behat\Definition\Pattern\SimplePatternTransformer;
 use Behat\Behat\Definition\Translator\TranslatorInterface;
 use Behat\Behat\Transformation\SimpleArgumentTransformation;
 use Behat\Behat\Transformation\Transformation\PatternTransformation;
@@ -37,7 +37,7 @@ final class RepositoryArgumentTransformer implements ArgumentTransformer, RegexG
      */
     private $callCenter;
     /**
-     * @var PatternTransformer
+     * @var SimplePatternTransformer
      */
     private $patternTransformer;
     /**
@@ -50,13 +50,13 @@ final class RepositoryArgumentTransformer implements ArgumentTransformer, RegexG
      *
      * @param TransformationRepository $repository
      * @param CallCenter               $callCenter
-     * @param PatternTransformer       $patternTransformer
+     * @param SimplePatternTransformer       $patternTransformer
      * @param TranslatorInterface      $translator
      */
     public function __construct(
         TransformationRepository $repository,
         CallCenter $callCenter,
-        PatternTransformer $patternTransformer,
+        SimplePatternTransformer $patternTransformer,
         TranslatorInterface $translator
     ) {
         $this->repository = $repository;

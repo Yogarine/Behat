@@ -16,6 +16,7 @@ use Behat\Testwork\Cli\ServiceContainer\CliExtension;
 use Behat\Testwork\Environment\ServiceContainer\EnvironmentExtension;
 use Behat\Testwork\EventDispatcher\ServiceContainer\EventDispatcherExtension;
 use Behat\Testwork\Exception\ServiceContainer\ExceptionExtension;
+use Behat\Testwork\ServiceContainer\TaggedServiceProcessor;
 use Behat\Testwork\ServiceContainer\ServiceProcessor;
 use Behat\Testwork\Tester\ServiceContainer\TesterExtension as BaseExtension;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
@@ -49,16 +50,16 @@ class TesterExtension extends BaseExtension
     public const STEP_TESTER_WRAPPER_TAG = 'tester.step.wrapper';
 
     /**
-     * @var ServiceProcessor
+     * @var TaggedServiceProcessor
      */
     private $processor;
 
     /**
      * Initializes extension.
      *
-     * @param null|ServiceProcessor $processor
+     * @param null|TaggedServiceProcessor $processor
      */
-    public function __construct(ServiceProcessor $processor = null)
+    public function __construct(TaggedServiceProcessor $processor = null)
     {
         $this->processor = $processor ? : new ServiceProcessor();
 

@@ -11,7 +11,7 @@
 namespace Behat\Testwork\Cli;
 
 use Behat\Testwork\ServiceContainer\Configuration\ConfigurationLoader;
-use Behat\Testwork\ServiceContainer\ExtensionManager;
+use Behat\Testwork\ServiceContainer\ExtensionActivationManager;
 use Symfony\Component\Console\Command\Command as BaseCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -32,7 +32,7 @@ final class DebugCommand extends BaseCommand
      */
     private $configurationLoader;
     /**
-     * @var ExtensionManager
+     * @var ExtensionActivationManager
      */
     private $extensionManager;
 
@@ -41,12 +41,12 @@ final class DebugCommand extends BaseCommand
      *
      * @param Application         $application
      * @param ConfigurationLoader $configurationLoader
-     * @param ExtensionManager    $extensionManager
+     * @param ExtensionActivationManager    $extensionManager
      */
     public function __construct(
         Application $application,
         ConfigurationLoader $configurationLoader,
-        ExtensionManager $extensionManager
+        ExtensionActivationManager $extensionManager
     ) {
         $this->application = $application;
         $this->configurationLoader = $configurationLoader;

@@ -15,7 +15,7 @@ use Behat\Behat\Context\Argument\SuiteScopedResolverFactoryAdapter;
 use Behat\Behat\Context\Argument\ArgumentResolverFactory;
 use Behat\Behat\Context\Argument\NullFactory;
 use Behat\Behat\Context\ContextClass\ClassResolver;
-use Behat\Behat\Context\ContextFactory;
+use Behat\Behat\Context\SimpleContextFactory;
 use Behat\Behat\Context\Environment\InitializedContextEnvironment;
 use Behat\Behat\Context\Environment\UninitializedContextEnvironment;
 use Behat\Testwork\Environment\Environment;
@@ -27,14 +27,14 @@ use Behat\Testwork\Suite\Suite;
 /**
  * Handles build and initialisation of the context-based environments.
  *
- * @see ContextFactory
+ * @see SimpleContextFactory
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */
 final class ContextEnvironmentHandler implements EnvironmentHandler
 {
     /**
-     * @var ContextFactory
+     * @var SimpleContextFactory
      */
     private $contextFactory;
     /**
@@ -49,10 +49,10 @@ final class ContextEnvironmentHandler implements EnvironmentHandler
     /**
      * Initializes handler.
      *
-     * @param ContextFactory                                     $factory
+     * @param SimpleContextFactory                                     $factory
      * @param ArgumentResolverFactory|SuiteScopedResolverFactory $resolverFactory
      */
-    public function __construct(ContextFactory $factory, $resolverFactory = null)
+    public function __construct(SimpleContextFactory $factory, $resolverFactory = null)
     {
         $this->contextFactory = $factory;
 

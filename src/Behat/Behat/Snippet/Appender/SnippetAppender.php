@@ -10,7 +10,7 @@
 
 namespace Behat\Behat\Snippet\Appender;
 
-use Behat\Behat\Snippet\AggregateSnippet;
+use Behat\Behat\Snippet\SimpleAggregateSnippet;
 use Behat\Behat\Snippet\SnippetWriter;
 
 /**
@@ -25,16 +25,16 @@ interface SnippetAppender
     /**
      * Checks if appender supports snippet.
      *
-     * @param AggregateSnippet $snippet
+     * @param SimpleAggregateSnippet $snippet
      *
      * @return bool
      */
-    public function supportsSnippet(AggregateSnippet $snippet);
+    public function supportsSnippet(SimpleAggregateSnippet $snippet);
 
     /**
      * Appends snippet to the source.
      *
-     * @param AggregateSnippet $snippet
+     * @param SimpleAggregateSnippet $snippet
      */
-    public function appendSnippet(AggregateSnippet $snippet);
+    public function appendSnippet(SimpleAggregateSnippet $snippet);
 }
