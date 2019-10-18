@@ -10,7 +10,7 @@
 
 namespace Behat\Behat\Tester\Result;
 
-use Behat\Behat\Definition\SearchResult;
+use Behat\Behat\Definition\DefinitionMatch;
 
 /**
  * Represents a skipped step result.
@@ -20,16 +20,16 @@ use Behat\Behat\Definition\SearchResult;
 final class SkippedStepResult implements StepResult, DefinedStepResult
 {
     /**
-     * @var SearchResult
+     * @var DefinitionMatch
      */
     private $searchResult;
 
     /**
      * Initializes step result.
      *
-     * @param SearchResult $searchResult
+     * @param DefinitionMatch $searchResult
      */
-    public function __construct(SearchResult $searchResult)
+    public function __construct(DefinitionMatch $searchResult)
     {
         $this->searchResult = $searchResult;
     }
@@ -37,7 +37,7 @@ final class SkippedStepResult implements StepResult, DefinedStepResult
     /**
      * Returns definition search result.
      *
-     * @return SearchResult
+     * @return DefinitionMatch
      */
     public function getSearchResult()
     {

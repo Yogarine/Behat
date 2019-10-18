@@ -10,8 +10,8 @@
 
 namespace Behat\Behat\Definition\Search;
 
+use Behat\Behat\Definition\DefinitionMatch;
 use Behat\Behat\Definition\StepDefinitionFinder;
-use Behat\Behat\Definition\SearchResult;
 use Behat\Gherkin\Node\FeatureNode;
 use Behat\Gherkin\Node\StepNode;
 use Behat\Testwork\Environment\Environment;
@@ -32,7 +32,7 @@ interface SearchEngine
      * @param FeatureNode $feature
      * @param StepNode    $step
      *
-     * @return null|SearchResult
+     * @return null|DefinitionMatch
      */
     public function searchDefinition(Environment $environment, FeatureNode $feature, StepNode $step);
 }

@@ -10,7 +10,7 @@
 
 namespace Behat\Behat\Tester\Result;
 
-use Behat\Behat\Definition\SearchResult;
+use Behat\Behat\Definition\DefinitionMatch;
 use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Testwork\Call\CallResult;
 use Behat\Testwork\Tester\Result\ExceptionResult;
@@ -23,7 +23,7 @@ use Behat\Testwork\Tester\Result\ExceptionResult;
 final class ExecutedStepResult implements StepResult, DefinedStepResult, ExceptionResult
 {
     /**
-     * @var SearchResult
+     * @var DefinitionMatch
      */
     private $searchResult;
     /**
@@ -34,10 +34,10 @@ final class ExecutedStepResult implements StepResult, DefinedStepResult, Excepti
     /**
      * Initialize test result.
      *
-     * @param SearchResult $searchResult
+     * @param DefinitionMatch $searchResult
      * @param CallResult   $callResult
      */
-    public function __construct(SearchResult $searchResult, CallResult $callResult)
+    public function __construct(DefinitionMatch $searchResult, CallResult $callResult)
     {
         $this->searchResult = $searchResult;
         $this->callResult = $callResult;
@@ -46,7 +46,7 @@ final class ExecutedStepResult implements StepResult, DefinedStepResult, Excepti
     /**
      * Returns definition search result.
      *
-     * @return SearchResult
+     * @return DefinitionMatch
      */
     public function getSearchResult()
     {

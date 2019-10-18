@@ -11,6 +11,7 @@
 namespace Behat\Behat\Definition\Search;
 
 use Behat\Behat\Definition\Definition;
+use Behat\Behat\Definition\DefinitionMatch;
 use Behat\Behat\Definition\EnvironmentDefinitionRepository;
 use Behat\Behat\Definition\Exception\AmbiguousMatchException;
 use Behat\Behat\Definition\Pattern\SimplePatternTransformer;
@@ -111,7 +112,7 @@ final class RepositorySearchEngine implements SearchEngine
      * @param string              $stepText
      * @param ArgumentInterface[] $multiline
      *
-     * @return null|SearchResult
+     * @return null|DefinitionMatch
      */
     private function match(Definition $definition, $stepText, array $multiline)
     {

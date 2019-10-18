@@ -15,7 +15,7 @@ namespace Behat\Behat\Definition;
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */
-final class SearchResult
+final class SearchResult implements DefinitionMatch
 {
     /**
      * @var null|Definition

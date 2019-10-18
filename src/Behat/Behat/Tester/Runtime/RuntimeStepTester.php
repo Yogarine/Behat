@@ -13,7 +13,7 @@ namespace Behat\Behat\Tester\Runtime;
 use Behat\Behat\Definition\Call\DefinitionCall;
 use Behat\Behat\Definition\StepDefinitionFinder;
 use Behat\Behat\Definition\Exception\SearchException;
-use Behat\Behat\Definition\SearchResult;
+use Behat\Behat\Definition\DefinitionMatch;
 use Behat\Behat\Tester\Result\ExecutedStepResult;
 use Behat\Behat\Tester\Result\FailedStepSearchResult;
 use Behat\Behat\Tester\Result\SkippedStepResult;
@@ -93,7 +93,7 @@ final class RuntimeStepTester implements StepTester
      * @param FeatureNode $feature
      * @param StepNode    $step
      *
-     * @return SearchResult
+     * @return DefinitionMatch
      */
     private function searchDefinition(Environment $env, FeatureNode $feature, StepNode $step)
     {
@@ -106,12 +106,12 @@ final class RuntimeStepTester implements StepTester
      * @param Environment  $env
      * @param FeatureNode  $feature
      * @param StepNode     $step
-     * @param SearchResult $search
+     * @param DefinitionMatch $search
      * @param bool      $skip
      *
      * @return StepResult
      */
-    private function testDefinition(Environment $env, FeatureNode $feature, StepNode $step, SearchResult $search, $skip)
+    private function testDefinition(Environment $env, FeatureNode $feature, StepNode $step, DefinitionMatch $search, $skip)
     {
         if (!$search->hasMatch()) {
             return new UndefinedStepResult();
@@ -132,12 +132,12 @@ final class RuntimeStepTester implements StepTester
      *
      * @param Environment  $env
      * @param FeatureNode  $feature
-     * @param SearchResult $search
+     * @param DefinitionMatch $search
      * @param StepNode     $step
      *
      * @return DefinitionCall
      */
-    private function createDefinitionCall(Environment $env, FeatureNode $feature, SearchResult $search, StepNode $step)
+    private function createDefinitionCall(Environment $env, FeatureNode $feature, DefinitionMatch $search, StepNode $step)
     {
         $definition = $search->getMatchedDefinition();
         $arguments = $search->getMatchedArguments();

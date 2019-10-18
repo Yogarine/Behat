@@ -44,7 +44,7 @@ final class DefinitionFinder implements StepDefinitionFinder
      * @param FeatureNode $feature
      * @param StepNode    $step
      *
-     * @return SearchResult
+     * @return DefinitionMatch
      */
     public function findDefinition(Environment $environment, FeatureNode $feature, StepNode $step)
     {
