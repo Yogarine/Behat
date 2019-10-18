@@ -10,7 +10,7 @@
 
 namespace Behat\Behat\Transformation\Transformation;
 
-use Behat\Behat\Definition\Call\DefinitionCall;
+use Behat\Behat\Definition\Call\FeatureStepCall;
 use Behat\Behat\Transformation\Call\TransformationCall;
 use Behat\Behat\Transformation\SimpleArgumentTransformation;
 use Behat\Testwork\Call\CallCenter;
@@ -57,7 +57,7 @@ final class TokenNameTransformation extends RuntimeCallee implements SimpleArgum
     /**
      * {@inheritdoc}
      */
-    public function supportsDefinitionAndArgument(DefinitionCall $definitionCall, $argumentIndex, $argumentValue)
+    public function supportsDefinitionAndArgument(FeatureStepCall $definitionCall, $argumentIndex, $argumentValue)
     {
         return ':' . $argumentIndex === $this->pattern;
     }
@@ -65,7 +65,7 @@ final class TokenNameTransformation extends RuntimeCallee implements SimpleArgum
     /**
      * {@inheritdoc}
      */
-    public function transformArgument(CallCenter $callCenter, DefinitionCall $definitionCall, $argumentIndex, $argumentValue)
+    public function transformArgument(CallCenter $callCenter, FeatureStepCall $definitionCall, $argumentIndex, $argumentValue)
     {
         $call = new TransformationCall(
             $definitionCall->getEnvironment(),

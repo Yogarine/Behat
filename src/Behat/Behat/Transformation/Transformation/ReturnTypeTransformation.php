@@ -10,7 +10,7 @@
 
 namespace Behat\Behat\Transformation\Transformation;
 
-use Behat\Behat\Definition\Call\DefinitionCall;
+use Behat\Behat\Definition\Call\FeatureStepCall;
 use Behat\Behat\Transformation\Call\TransformationCall;
 use Behat\Behat\Transformation\SimpleArgumentTransformation;
 use Behat\Testwork\Call\CallCenter;
@@ -58,7 +58,7 @@ final class ReturnTypeTransformation extends RuntimeCallee implements SimpleArgu
     /**
      * {@inheritdoc}
      */
-    public function supportsDefinitionAndArgument(DefinitionCall $definitionCall, $argumentIndex, $argumentValue)
+    public function supportsDefinitionAndArgument(FeatureStepCall $definitionCall, $argumentIndex, $argumentValue)
     {
         $returnClass = self::getReturnClass($this->getReflection());
 
@@ -74,7 +74,7 @@ final class ReturnTypeTransformation extends RuntimeCallee implements SimpleArgu
     /**
      * {@inheritdoc}
      */
-    public function transformArgument(CallCenter $callCenter, DefinitionCall $definitionCall, $argumentIndex, $argumentValue)
+    public function transformArgument(CallCenter $callCenter, FeatureStepCall $definitionCall, $argumentIndex, $argumentValue)
     {
         $call = new TransformationCall(
             $definitionCall->getEnvironment(),
@@ -141,12 +141,12 @@ final class ReturnTypeTransformation extends RuntimeCallee implements SimpleArgu
     /**
      * Attempts to get definition parameter using its index (parameter position or name).
      *
-     * @param DefinitionCall $definitionCall
+     * @param FeatureStepCall $definitionCall
      * @param string|integer $argumentIndex
      *
      * @return null|string
      */
-    private function getParameterClassNameByIndex(DefinitionCall $definitionCall, $argumentIndex)
+    private function getParameterClassNameByIndex(FeatureStepCall $definitionCall, $argumentIndex)
     {
         $parameters = array_filter(
             array_filter($this->getCallParameters($definitionCall),
@@ -160,11 +160,11 @@ final class ReturnTypeTransformation extends RuntimeCallee implements SimpleArgu
     /**
      * Extracts parameters from provided definition call.
      *
-     * @param DefinitionCall $definitionCall
+     * @param FeatureStepCall $definitionCall
      *
      * @return ReflectionParameter[]
      */
-    private function getCallParameters(DefinitionCall $definitionCall)
+    private function getCallParameters(FeatureStepCall $definitionCall)
     {
         return $definitionCall->getCallee()->getReflection()->getParameters();
     }

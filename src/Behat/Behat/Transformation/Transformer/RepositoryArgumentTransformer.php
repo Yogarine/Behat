@@ -10,7 +10,7 @@
 
 namespace Behat\Behat\Transformation\Transformer;
 
-use Behat\Behat\Definition\Call\DefinitionCall;
+use Behat\Behat\Definition\Call\FeatureStepCall;
 use Behat\Behat\Definition\Pattern\SimplePatternTransformer;
 use Behat\Behat\Definition\Translator\TranslatorInterface;
 use Behat\Behat\Transformation\SimpleArgumentTransformation;
@@ -68,7 +68,7 @@ final class RepositoryArgumentTransformer implements ArgumentTransformer, RegexG
     /**
      * {@inheritdoc}
      */
-    public function supportsDefinitionAndArgument(DefinitionCall $definitionCall, $argumentIndex, $argumentValue)
+    public function supportsDefinitionAndArgument(FeatureStepCall $definitionCall, $argumentIndex, $argumentValue)
     {
         return count($this->repository->getEnvironmentTransformations($definitionCall->getEnvironment())) > 0;
     }
@@ -76,7 +76,7 @@ final class RepositoryArgumentTransformer implements ArgumentTransformer, RegexG
     /**
      * {@inheritdoc}
      */
-    public function transformArgument(DefinitionCall $definitionCall, $argumentIndex, $argumentValue)
+    public function transformArgument(FeatureStepCall $definitionCall, $argumentIndex, $argumentValue)
     {
         $environment = $definitionCall->getEnvironment();
         list($simpleTransformations, $normalTransformations) = $this->splitSimpleAndNormalTransformations(
@@ -106,13 +106,13 @@ final class RepositoryArgumentTransformer implements ArgumentTransformer, RegexG
      * Apply simple argument transformations in priority order.
      *
      * @param SimpleArgumentTransformation[] $transformations
-     * @param DefinitionCall                 $definitionCall
+     * @param FeatureStepCall                 $definitionCall
      * @param integer|string                 $index
      * @param mixed                          $value
      *
      * @return mixed
      */
-    private function applySimpleTransformations(array $transformations, DefinitionCall $definitionCall, $index, $value)
+    private function applySimpleTransformations(array $transformations, FeatureStepCall $definitionCall, $index, $value)
     {
         usort($transformations, function (SimpleArgumentTransformation $t1, SimpleArgumentTransformation $t2) {
             return $t2->getPriority() <=> $t1->getPriority();
@@ -130,13 +130,13 @@ final class RepositoryArgumentTransformer implements ArgumentTransformer, RegexG
      * Apply normal (non-simple) argument transformations.
      *
      * @param Transformation[] $transformations
-     * @param DefinitionCall   $definitionCall
+     * @param FeatureStepCall   $definitionCall
      * @param integer|string   $index
      * @param mixed            $value
      *
      * @return mixed
      */
-    private function applyNormalTransformations(array $transformations, DefinitionCall $definitionCall, $index, $value)
+    private function applyNormalTransformations(array $transformations, FeatureStepCall $definitionCall, $index, $value)
     {
         $newValue = $value;
         foreach ($transformations as $transformation) {
@@ -150,13 +150,13 @@ final class RepositoryArgumentTransformer implements ArgumentTransformer, RegexG
      * Transforms argument value using registered transformers.
      *
      * @param Transformation $transformation
-     * @param DefinitionCall $definitionCall
+     * @param FeatureStepCall $definitionCall
      * @param integer|string $index
      * @param mixed          $value
      *
      * @return mixed
      */
-    private function transform(DefinitionCall $definitionCall, Transformation $transformation, $index, $value)
+    private function transform(FeatureStepCall $definitionCall, Transformation $transformation, $index, $value)
     {
         if (is_object($value) && !$value instanceof ArgumentInterface) {
             return $value;

@@ -10,7 +10,7 @@
 
 namespace Behat\Behat\Transformation\Transformer;
 
-use Behat\Behat\Definition\Call\DefinitionCall;
+use Behat\Behat\Definition\Call\FeatureStepCall;
 
 /**
  * Transforms a single argument value.
@@ -22,22 +22,22 @@ interface ArgumentTransformer
     /**
      * Checks if transformer supports argument.
      *
-     * @param DefinitionCall $definitionCall
+     * @param FeatureStepCall $definitionCall
      * @param integer|string $argumentIndex
      * @param mixed          $argumentValue
      *
      * @return bool
      */
-    public function supportsDefinitionAndArgument(DefinitionCall $definitionCall, $argumentIndex, $argumentValue);
+    public function supportsDefinitionAndArgument(FeatureStepCall $definitionCall, $argumentIndex, $argumentValue);
 
     /**
      * Transforms argument value using transformation and returns a new one.
      *
-     * @param DefinitionCall $definitionCall
+     * @param FeatureStepCall $definitionCall
      * @param integer|string $argumentIndex
      * @param mixed          $argumentValue
      *
      * @return mixed
      */
-    public function transformArgument(DefinitionCall $definitionCall, $argumentIndex, $argumentValue);
+    public function transformArgument(FeatureStepCall $definitionCall, $argumentIndex, $argumentValue);
 }

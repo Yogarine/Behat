@@ -11,6 +11,7 @@
 namespace Behat\Behat\Transformation\Call\Filter;
 
 use Behat\Behat\Definition\Call\DefinitionCall;
+use Behat\Behat\Definition\Call\FeatureStepCall;
 use Behat\Behat\Transformation\Exception\UnsupportedCallException;
 use Behat\Behat\Transformation\Transformer\ArgumentTransformer;
 use Behat\Testwork\Call\Call;
@@ -43,7 +44,7 @@ final class DefinitionArgumentsTransformer implements CallFilter
      */
     public function supportsCall(Call $call)
     {
-        return $call instanceof DefinitionCall;
+        return $call instanceof FeatureStepCall;
     }
 
     /**
@@ -51,7 +52,7 @@ final class DefinitionArgumentsTransformer implements CallFilter
      */
     public function filterCall(Call $definitionCall)
     {
-        if (!$definitionCall instanceof DefinitionCall) {
+        if (!$definitionCall instanceof FeatureStepCall) {
             throw new UnsupportedCallException(sprintf(
                 'DefinitionArgumentTransformer can not filter `%s` call.',
                 get_class($definitionCall)
@@ -87,13 +88,13 @@ final class DefinitionArgumentsTransformer implements CallFilter
     /**
      * Transforms call argument using registered transformers.
      *
-     * @param DefinitionCall $definitionCall
+     * @param FeatureStepCall $definitionCall
      * @param integer|string $index
      * @param mixed          $value
      *
      * @return mixed
      */
-    private function transformArgument(DefinitionCall $definitionCall, $index, $value)
+    private function transformArgument(FeatureStepCall $definitionCall, $index, $value)
     {
         foreach ($this->argumentTransformers as $transformer) {
             if (!$transformer->supportsDefinitionAndArgument($definitionCall, $index, $value)) {

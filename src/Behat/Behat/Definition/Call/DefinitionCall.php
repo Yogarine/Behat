@@ -21,7 +21,7 @@ use Behat\Testwork\Environment\Environment;
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */
-final class DefinitionCall extends EnvironmentCall
+final class DefinitionCall extends EnvironmentCall implements FeatureStepCall
 {
     /**
      * @var FeatureNode

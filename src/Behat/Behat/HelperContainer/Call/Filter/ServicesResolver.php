@@ -13,6 +13,7 @@ namespace Behat\Behat\HelperContainer\Call\Filter;
 use Behat\Behat\Definition\Definition;
 use Behat\Behat\HelperContainer\Environment\ServiceContainerEnvironment;
 use Behat\Behat\Definition\Call\DefinitionCall;
+use Behat\Behat\Definition\Call\FeatureStepCall;
 use Behat\Behat\HelperContainer\ArgumentAutowirer;
 use Behat\Behat\HelperContainer\Exception\UnsupportedCallException;
 use Behat\Behat\Transformation\Call\TransformationCall;
@@ -35,7 +36,7 @@ final class ServicesResolver implements CallFilter
      */
     public function supportsCall(Call $call)
     {
-        return ($call instanceof DefinitionCall || $call instanceof TransformationCall)
+        return ($call instanceof FeatureStepCall || $call instanceof TransformationCall)
             && $call->getEnvironment() instanceof ServiceContainerEnvironment;
     }
 
@@ -122,7 +123,7 @@ final class ServicesResolver implements CallFilter
      */
     private function repackageCallWithNewArguments(Call $call, array $newArguments)
     {
-        if ($call instanceof DefinitionCall) {
+        if ($call instanceof FeatureStepCall) {
             return $this->repackageDefinitionCall($call, $newArguments);
         }
 
@@ -141,14 +142,14 @@ final class ServicesResolver implements CallFilter
     /**
      * Repackages definition call with new arguments.
      *
-     * @param DefinitionCall $call
+     * @param FeatureStepCall $call
      * @param array $newArguments
      *
      * @return DefinitionCall
      *
      * @throws UnsupportedCallException
      */
-    private function repackageDefinitionCall(DefinitionCall $call, array $newArguments)
+    private function repackageDefinitionCall(FeatureStepCall $call, array $newArguments)
     {
         $definition = $call->getCallee();
 

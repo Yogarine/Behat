@@ -10,7 +10,7 @@
 
 namespace Behat\Behat\Transformation;
 
-use Behat\Behat\Definition\Call\DefinitionCall;
+use Behat\Behat\Definition\Call\FeatureStepCall;
 use Behat\Testwork\Call\CallCenter;
 use ReflectionMethod;
 
@@ -41,23 +41,23 @@ interface SimpleArgumentTransformation extends Transformation
     /**
      * Checks if transformation supports argument.
      *
-     * @param DefinitionCall $definitionCall
+     * @param FeatureStepCall $definitionCall
      * @param integer|string $argumentIndex
      * @param mixed          $argumentValue
      *
      * @return bool
      */
-    public function supportsDefinitionAndArgument(DefinitionCall $definitionCall, $argumentIndex, $argumentValue);
+    public function supportsDefinitionAndArgument(FeatureStepCall $definitionCall, $argumentIndex, $argumentValue);
 
     /**
      * Transforms argument value using transformation and returns a new one.
      *
      * @param CallCenter     $callCenter
-     * @param DefinitionCall $definitionCall
+     * @param FeatureStepCall $definitionCall
      * @param integer|string $argumentIndex
      * @param mixed          $argumentValue
      *
      * @return mixed
      */
-    public function transformArgument(CallCenter $callCenter, DefinitionCall $definitionCall, $argumentIndex, $argumentValue);
+    public function transformArgument(CallCenter $callCenter, FeatureStepCall $definitionCall, $argumentIndex, $argumentValue);
 }

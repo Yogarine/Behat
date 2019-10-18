@@ -10,7 +10,7 @@
 
 namespace Behat\Behat\Transformation\Transformation;
 
-use Behat\Behat\Definition\Call\DefinitionCall;
+use Behat\Behat\Definition\Call\FeatureStepCall;
 use Behat\Behat\Transformation\Call\TransformationCall;
 use Behat\Behat\Transformation\RegexGenerator;
 use Behat\Behat\Transformation\Transformation;
@@ -48,14 +48,14 @@ final class PatternTransformation extends RuntimeCallee implements Transformatio
      * Checks if transformer supports argument.
      *
      * @param RegexGenerator $regexGenerator
-     * @param DefinitionCall $definitionCall
+     * @param FeatureStepCall $definitionCall
      * @param mixed          $argumentValue
      *
      * @return bool
      */
     public function supportsDefinitionAndArgument(
         RegexGenerator $regexGenerator,
-        DefinitionCall $definitionCall,
+        FeatureStepCall $definitionCall,
         $argumentValue
     ) {
         $regex = $regexGenerator->generateRegex(
@@ -72,7 +72,7 @@ final class PatternTransformation extends RuntimeCallee implements Transformatio
      *
      * @param RegexGenerator $regexGenerator
      * @param CallCenter     $callCenter
-     * @param DefinitionCall $definitionCall
+     * @param FeatureStepCall $definitionCall
      * @param mixed          $argumentValue
      *
      * @return mixed
@@ -82,7 +82,7 @@ final class PatternTransformation extends RuntimeCallee implements Transformatio
     public function transformArgument(
         RegexGenerator $regexGenerator,
         CallCenter $callCenter,
-        DefinitionCall $definitionCall,
+        FeatureStepCall $definitionCall,
         $argumentValue
     ) {
         $regex = $regexGenerator->generateRegex(
