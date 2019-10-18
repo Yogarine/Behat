@@ -17,7 +17,7 @@ use InvalidArgumentException;
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */
-final class UnsupportedPatternTypeException extends InvalidArgumentException implements DefinitionException
+final class UnsupportedPatternTypeException extends InvalidArgumentException implements PatternTypeException
 {
     /**
      * @var string

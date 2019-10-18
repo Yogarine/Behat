@@ -11,7 +11,7 @@
 namespace Behat\Behat\Definition\Pattern;
 
 use Behat\Behat\Definition\Exception\UnknownPatternException;
-use Behat\Behat\Definition\Exception\UnsupportedPatternTypeException;
+use Behat\Behat\Definition\Exception\PatternTypeException;
 
 /**
  * Transforms patterns.
@@ -28,7 +28,7 @@ interface SimplePatternTransformer
      *
      * @return Pattern
      *
-     * @throws UnsupportedPatternTypeException
+     * @throws PatternTypeException
      */
     public function generatePattern($type, $stepText);
 
