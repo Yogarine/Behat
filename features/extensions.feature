@@ -73,7 +73,7 @@ Feature: Extensions
               $builder->useAttributeAsKey('name')->prototype('variable');
           }
 
-          public function initialize(Behat\Testwork\ServiceContainer\ExtensionManager $extensionManager) {}
+          public function initialize(Behat\Testwork\ServiceContainer\ExtensionActivationManager $extensionManager) {}
 
           public function load(ContainerBuilder $container, array $config)
           {
@@ -153,7 +153,7 @@ Feature: Extensions
       <?php
 
       use Behat\Testwork\ServiceContainer\Extension;
-      use Behat\Testwork\ServiceContainer\ExtensionManager;
+      use Behat\Testwork\ServiceContainer\ExtensionActivationManager;
       use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
       use Symfony\Component\DependencyInjection\Definition;
       use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -172,7 +172,7 @@ Feature: Extensions
       class CustomHandlers implements Extension {
           public function getConfigKey() { return 'custom_handlers'; }
           public function configure(ArrayNodeDefinition $builder) { }
-          public function initialize(Behat\Testwork\ServiceContainer\ExtensionManager $extensionManager) {}
+          public function initialize(Behat\Testwork\ServiceContainer\ExtensionActivationManager $extensionManager) {}
           public function process(ContainerBuilder $container) {}
 
           public function load(ContainerBuilder $container, array $config)

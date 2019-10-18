@@ -382,7 +382,7 @@ Feature: Per-suite helper containers
       <?php
 
       use Behat\Testwork\ServiceContainer\Extension;
-      use Behat\Testwork\ServiceContainer\ExtensionManager;
+      use Behat\Testwork\ServiceContainer\ExtensionActivationManager;
       use Behat\Behat\HelperContainer\ServiceContainer\HelperContainerExtension;
       use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
       use Symfony\Component\DependencyInjection\Definition;
@@ -391,7 +391,7 @@ Feature: Per-suite helper containers
       class MyExtension implements Extension {
           public function getConfigKey() { return 'container_provider'; }
           public function configure(ArrayNodeDefinition $builder) { }
-          public function initialize(ExtensionManager $extensionManager) {}
+          public function initialize(ExtensionActivationManager $extensionManager) {}
           public function process(ContainerBuilder $container) {}
 
           public function load(ContainerBuilder $container, array $config) {

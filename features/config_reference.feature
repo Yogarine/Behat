@@ -44,7 +44,7 @@ Feature: Config reference
                   ->end();
           }
 
-          public function initialize(Behat\Testwork\ServiceContainer\ExtensionManager $extensionManager) {}
+          public function initialize(Behat\Testwork\ServiceContainer\ExtensionActivationManager $extensionManager) {}
 
           public function load(ContainerBuilder $container, array $config) {}
 
