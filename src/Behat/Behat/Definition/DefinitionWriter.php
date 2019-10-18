@@ -26,7 +26,7 @@ final class DefinitionWriter implements SuiteDefinitionWriter
      */
     private $environmentManager;
     /**
-     * @var DefinitionRepository
+     * @var EnvironmentDefinitionRepository
      */
     private $repository;
 
@@ -34,9 +34,9 @@ final class DefinitionWriter implements SuiteDefinitionWriter
      * Initializes writer.
      *
      * @param EnvironmentManager   $environmentManager
-     * @param DefinitionRepository $repository
+     * @param EnvironmentDefinitionRepository $repository
      */
-    public function __construct(EnvironmentManager $environmentManager, DefinitionRepository $repository)
+    public function __construct(EnvironmentManager $environmentManager, EnvironmentDefinitionRepository $repository)
     {
         $this->environmentManager = $environmentManager;
         $this->repository = $repository;

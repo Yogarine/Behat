@@ -12,7 +12,7 @@ namespace Behat\Behat\Definition\Printer;
 
 use Behat\Behat\Definition\Definition;
 use Behat\Behat\Definition\Pattern\SimplePatternTransformer;
-use Behat\Behat\Definition\Translator\DefinitionTranslator;
+use Behat\Behat\Definition\Translator\SuiteDefinitionTranslator;
 use Behat\Gherkin\Keywords\KeywordsInterface;
 use Behat\Testwork\Suite\Suite;
 use Symfony\Component\Console\Formatter\OutputFormatterStyle;
@@ -34,7 +34,7 @@ abstract class ConsoleDefinitionPrinter implements DefinitionPrinter
      */
     private $patternTransformer;
     /**
-     * @var DefinitionTranslator
+     * @var SuiteDefinitionTranslator
      */
     private $translator;
     /**
@@ -47,13 +47,13 @@ abstract class ConsoleDefinitionPrinter implements DefinitionPrinter
      *
      * @param OutputInterface     $output
      * @param SimplePatternTransformer  $patternTransformer
-     * @param DefinitionTranslator $translator
+     * @param SuiteDefinitionTranslator $translator
      * @param KeywordsInterface   $keywords
      */
     public function __construct(
         OutputInterface $output,
         SimplePatternTransformer $patternTransformer,
-        DefinitionTranslator $translator,
+        SuiteDefinitionTranslator $translator,
         KeywordsInterface $keywords
     ) {
         $this->output = $output;

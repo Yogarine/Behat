@@ -19,7 +19,7 @@ use Behat\Testwork\Environment\EnvironmentManager;
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */
-final class DefinitionRepository
+final class DefinitionRepository implements EnvironmentDefinitionRepository
 {
     /**
      * @var EnvironmentManager

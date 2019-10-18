@@ -11,11 +11,11 @@
 namespace Behat\Behat\Definition\Search;
 
 use Behat\Behat\Definition\Definition;
-use Behat\Behat\Definition\DefinitionRepository;
+use Behat\Behat\Definition\EnvironmentDefinitionRepository;
 use Behat\Behat\Definition\Exception\AmbiguousMatchException;
 use Behat\Behat\Definition\Pattern\SimplePatternTransformer;
 use Behat\Behat\Definition\SearchResult;
-use Behat\Behat\Definition\Translator\DefinitionTranslator;
+use Behat\Behat\Definition\Translator\SuiteDefinitionTranslator;
 use Behat\Gherkin\Node\ArgumentInterface;
 use Behat\Gherkin\Node\FeatureNode;
 use Behat\Gherkin\Node\StepNode;
@@ -25,14 +25,14 @@ use Behat\Testwork\Environment\Environment;
 /**
  * Searches for a step definition using definition repository.
  *
- * @see DefinitionRepository
+ * @see EnvironmentDefinitionRepository
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */
 final class RepositorySearchEngine implements SearchEngine
 {
     /**
-     * @var DefinitionRepository
+     * @var EnvironmentDefinitionRepository
      */
     private $repository;
     /**
@@ -40,7 +40,7 @@ final class RepositorySearchEngine implements SearchEngine
      */
     private $patternTransformer;
     /**
-     * @var DefinitionTranslator
+     * @var SuiteDefinitionTranslator
      */
     private $translator;
     /**
@@ -51,15 +51,15 @@ final class RepositorySearchEngine implements SearchEngine
     /**
      * Initializes search engine.
      *
-     * @param DefinitionRepository $repository
+     * @param EnvironmentDefinitionRepository $repository
      * @param SimplePatternTransformer   $patternTransformer
-     * @param DefinitionTranslator $translator
+     * @param SuiteDefinitionTranslator $translator
      * @param ArgumentOrganiser    $argumentOrganiser
      */
     public function __construct(
-        DefinitionRepository $repository,
+        EnvironmentDefinitionRepository $repository,
         SimplePatternTransformer $patternTransformer,
-        DefinitionTranslator $translator,
+        SuiteDefinitionTranslator $translator,
         ArgumentOrganiser $argumentOrganiser
     ) {
         $this->repository = $repository;

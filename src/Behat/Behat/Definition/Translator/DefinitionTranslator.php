@@ -18,7 +18,7 @@ use Behat\Testwork\Suite\Suite;
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */
-final class DefinitionTranslator
+final class DefinitionTranslator implements SuiteDefinitionTranslator
 {
     /**
      * @var TranslatorInterface
@@ -57,6 +57,9 @@ final class DefinitionTranslator
         return $definition;
     }
 
+    /**
+     * @return string
+     */
     public function getLocale()
     {
         return $this->translator->getLocale();
