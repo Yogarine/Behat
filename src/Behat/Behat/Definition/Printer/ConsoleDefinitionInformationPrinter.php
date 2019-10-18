@@ -18,7 +18,7 @@ use Behat\Testwork\Suite\Suite;
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */
-final class ConsoleDefinitionInformationPrinter extends ConsoleDefinitionPrinter
+final class ConsoleDefinitionInformationPrinter extends ConsoleDefinitionPrinter implements SpecificDefinitionPrinter
 {
     /**
      * @var null|string

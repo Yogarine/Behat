@@ -19,7 +19,7 @@ use Behat\Testwork\Suite\Suite;
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */
-final class DefinitionWriter
+final class DefinitionWriter implements SuiteDefinitionWriter
 {
     /**
      * @var EnvironmentManager
