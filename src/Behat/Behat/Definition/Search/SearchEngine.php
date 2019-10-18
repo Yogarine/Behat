@@ -10,7 +10,7 @@
 
 namespace Behat\Behat\Definition\Search;
 
-use Behat\Behat\Definition\DefinitionFinder;
+use Behat\Behat\Definition\StepDefinitionFinder;
 use Behat\Behat\Definition\SearchResult;
 use Behat\Gherkin\Node\FeatureNode;
 use Behat\Gherkin\Node\StepNode;
@@ -19,7 +19,7 @@ use Behat\Testwork\Environment\Environment;
 /**
  * Searches for a step definition in a specific environment.
  *
- * @see DefinitionFinder
+ * @see StepDefinitionFinder
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */

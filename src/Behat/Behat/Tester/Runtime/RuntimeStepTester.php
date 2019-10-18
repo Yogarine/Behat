@@ -11,7 +11,7 @@
 namespace Behat\Behat\Tester\Runtime;
 
 use Behat\Behat\Definition\Call\DefinitionCall;
-use Behat\Behat\Definition\DefinitionFinder;
+use Behat\Behat\Definition\StepDefinitionFinder;
 use Behat\Behat\Definition\Exception\SearchException;
 use Behat\Behat\Definition\SearchResult;
 use Behat\Behat\Tester\Result\ExecutedStepResult;
@@ -35,7 +35,7 @@ use Behat\Testwork\Tester\Setup\SuccessfulTeardown;
 final class RuntimeStepTester implements StepTester
 {
     /**
-     * @var DefinitionFinder
+     * @var StepDefinitionFinder
      */
     private $definitionFinder;
     /**
@@ -46,10 +46,10 @@ final class RuntimeStepTester implements StepTester
     /**
      * Initialize tester.
      *
-     * @param DefinitionFinder $definitionFinder
+     * @param StepDefinitionFinder $definitionFinder
      * @param CallCenter       $callCenter
      */
-    public function __construct(DefinitionFinder $definitionFinder, CallCenter $callCenter)
+    public function __construct(StepDefinitionFinder $definitionFinder, CallCenter $callCenter)
     {
         $this->definitionFinder = $definitionFinder;
         $this->callCenter = $callCenter;
