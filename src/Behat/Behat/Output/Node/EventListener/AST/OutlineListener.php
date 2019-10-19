@@ -12,7 +12,7 @@ namespace Behat\Behat\Output\Node\EventListener\AST;
 
 use Behat\Behat\EventDispatcher\Event\AfterOutlineTested;
 use Behat\Behat\EventDispatcher\Event\AfterScenarioSetup;
-use Behat\Behat\EventDispatcher\Event\AfterScenarioTested;
+use Behat\Behat\EventDispatcher\Event\EnvironmentAfterTested;
 use Behat\Behat\EventDispatcher\Event\AfterStepSetup;
 use Behat\Behat\EventDispatcher\Event\AfterStepTested;
 use Behat\Behat\EventDispatcher\Event\BeforeOutlineTested;
@@ -151,7 +151,7 @@ final class OutlineListener implements EventListener
      */
     private function printExampleFooterOnAfterExampleEvent(Formatter $formatter, Event $event, $eventName)
     {
-        if (!$event instanceof AfterScenarioTested || ExampleTested::AFTER !== $eventName) {
+        if (!$event instanceof EnvironmentAfterTested || ExampleTested::AFTER !== $eventName) {
             return;
         }
 

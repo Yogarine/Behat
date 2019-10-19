@@ -2,7 +2,7 @@
 namespace Behat\Behat\Output\Node\EventListener\JUnit;
 
 use Behat\Behat\EventDispatcher\Event\AfterFeatureTested;
-use Behat\Behat\EventDispatcher\Event\AfterScenarioTested;
+use Behat\Behat\EventDispatcher\Event\EnvironmentAfterTested;
 use Behat\Behat\EventDispatcher\Event\BeforeFeatureTested;
 use Behat\Behat\EventDispatcher\Event\BeforeScenarioTested;
 use Behat\Gherkin\Node\FeatureNode;
@@ -61,7 +61,7 @@ final class JUnitDurationListener implements EventListener
 
     private function captureAfterScenarioEvent(Event $event)
     {
-        if (!$event instanceof AfterScenarioTested) {
+        if (!$event instanceof EnvironmentAfterTested) {
             return;
         }
 

@@ -10,7 +10,7 @@
 
 namespace Behat\Behat\Tester\Cli;
 
-use Behat\Behat\EventDispatcher\Event\AfterScenarioTested;
+use Behat\Behat\EventDispatcher\Event\EnvironmentAfterTested;
 use Behat\Behat\EventDispatcher\Event\ExampleTested;
 use Behat\Behat\EventDispatcher\Event\ScenarioTested;
 use Behat\Testwork\Cli\Controller;
@@ -106,9 +106,9 @@ final class RerunController implements Controller
     /**
      * Records scenario if it is failed.
      *
-     * @param AfterScenarioTested $event
+     * @param EnvironmentAfterTested $event
      */
-    public function collectFailedScenario(AfterScenarioTested $event)
+    public function collectFailedScenario(EnvironmentAfterTested $event)
     {
         if (!$this->getFileName()) {
             return;
