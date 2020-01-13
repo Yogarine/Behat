@@ -13,7 +13,7 @@ namespace Behat\Behat\Hook\Tester;
 use Behat\Behat\Hook\Scope\AfterFeatureScope;
 use Behat\Behat\Hook\Scope\BeforeFeatureScope;
 use Behat\Testwork\Environment\Environment;
-use Behat\Testwork\Hook\HookDispatcher;
+use Behat\Testwork\Hook\HookScopeDispatcher;
 use Behat\Testwork\Hook\Tester\Setup\HookedSetup;
 use Behat\Testwork\Hook\Tester\Setup\HookedTeardown;
 use Behat\Testwork\Tester\Result\TestResult;
@@ -31,7 +31,7 @@ final class HookableFeatureTester implements SpecificationTester
      */
     private $baseTester;
     /**
-     * @var HookDispatcher
+     * @var HookScopeDispatcher
      */
     private $hookDispatcher;
 
@@ -39,9 +39,9 @@ final class HookableFeatureTester implements SpecificationTester
      * Initializes tester.
      *
      * @param SpecificationTester $baseTester
-     * @param HookDispatcher      $hookDispatcher
+     * @param HookScopeDispatcher $hookDispatcher
      */
-    public function __construct(SpecificationTester $baseTester, HookDispatcher $hookDispatcher)
+    public function __construct(SpecificationTester $baseTester, HookScopeDispatcher $hookDispatcher)
     {
         $this->baseTester = $baseTester;
         $this->hookDispatcher = $hookDispatcher;

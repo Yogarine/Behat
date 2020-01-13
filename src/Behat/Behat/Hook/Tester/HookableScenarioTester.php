@@ -17,6 +17,7 @@ use Behat\Gherkin\Node\FeatureNode;
 use Behat\Gherkin\Node\ScenarioInterface as Scenario;
 use Behat\Testwork\Environment\Environment;
 use Behat\Testwork\Hook\HookDispatcher;
+use Behat\Testwork\Hook\HookScopeDispatcher;
 use Behat\Testwork\Hook\Tester\Setup\HookedSetup;
 use Behat\Testwork\Hook\Tester\Setup\HookedTeardown;
 use Behat\Testwork\Tester\Result\TestResult;
@@ -33,17 +34,17 @@ final class HookableScenarioTester implements ScenarioTester
      */
     private $baseTester;
     /**
-     * @var HookDispatcher
+     * @var HookScopeDispatcher
      */
     private $hookDispatcher;
 
     /**
      * Initializes tester.
      *
-     * @param ScenarioTester $baseTester
-     * @param HookDispatcher $hookDispatcher
+     * @param ScenarioTester      $baseTester
+     * @param HookScopeDispatcher $hookDispatcher
      */
-    public function __construct(ScenarioTester $baseTester, HookDispatcher $hookDispatcher)
+    public function __construct(ScenarioTester $baseTester, HookScopeDispatcher $hookDispatcher)
     {
         $this->baseTester = $baseTester;
         $this->hookDispatcher = $hookDispatcher;

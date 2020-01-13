@@ -17,7 +17,7 @@ use InvalidArgumentException;
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */
-final class WrongContainerClassException extends InvalidArgumentException implements HelperContainerException
+final class WrongContainerClassException extends InvalidArgumentException implements ClassException
 {
     /**
      * @var string

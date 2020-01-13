@@ -16,6 +16,7 @@ use Behat\Testwork\ServiceContainer\Exception\ExtensionException;
 use Behat\Testwork\ServiceContainer\Extension;
 use Behat\Testwork\ServiceContainer\ExtensionActivationManager;
 use Behat\Testwork\ServiceContainer\ServiceProcessor;
+use Behat\Testwork\ServiceContainer\TaggedServiceProcessor;
 use Behat\Testwork\Specification\ServiceContainer\SpecificationExtension;
 use Behat\Testwork\Suite\ServiceContainer\SuiteExtension;
 use Behat\Testwork\Translator\ServiceContainer\TranslatorExtension;
@@ -45,16 +46,16 @@ final class GherkinExtension implements Extension
     public const LOADER_TAG = 'gherkin.loader';
 
     /**
-     * @var ServiceProcessor
+     * @var TaggedServiceProcessor
      */
     private $processor;
 
     /**
      * Initializes extension.
      *
-     * @param null|ServiceProcessor $processor
+     * @param null|TaggedServiceProcessor $processor
      */
-    public function __construct(ServiceProcessor $processor = null)
+    public function __construct(TaggedServiceProcessor $processor = null)
     {
         $this->processor = $processor ? : new ServiceProcessor();
     }

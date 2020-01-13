@@ -12,7 +12,6 @@ namespace Behat\Behat\EventDispatcher\Event;
 
 use Behat\Gherkin\Node\FeatureNode;
 use Behat\Gherkin\Node\ScenarioLikeInterface as Scenario;
-use Behat\Gherkin\Node\ScenarioNode;
 use Behat\Testwork\Environment\Environment;
 use Behat\Testwork\Tester\Result\TestResult;
 use Behat\Testwork\Tester\Setup\Teardown;
@@ -78,7 +77,7 @@ final class AfterScenarioTested extends ScenarioTested implements EnvironmentAft
     /**
      * Returns scenario node.
      *
-     * @return ScenarioNode
+     * @return Scenario
      */
     public function getScenario()
     {

@@ -14,7 +14,10 @@ use Behat\Behat\EventDispatcher\Event\AfterStepSetup;
 use Behat\Behat\EventDispatcher\Event\AfterStepTested;
 use Behat\Behat\EventDispatcher\Event\BackgroundTested;
 use Behat\Behat\EventDispatcher\Event\FeatureTested;
+use Behat\Behat\EventDispatcher\Event\StepEventWithOutput;
 use Behat\Testwork\Event\Event;
+use Behat\Testwork\EventDispatcher\Event\AfterSetup;
+use Behat\Testwork\EventDispatcher\Event\AfterTested;
 use Behat\Testwork\Output\Formatter;
 use Behat\Testwork\Output\Node\EventListener\EventListener;
 
@@ -173,7 +176,10 @@ class OnlyFirstBackgroundFiresListener implements EventListener
      */
     private function isBeforeStepEventWithOutput(Event $event)
     {
-        if ($event instanceof AfterStepSetup && $event->hasOutput()) {
+        if ($event instanceof AfterSetup
+            && $event instanceof StepEventWithOutput
+            && $event->hasOutput()
+        ) {
             $this->stepSetupHadOutput = true;
 
             return true;
@@ -191,7 +197,10 @@ class OnlyFirstBackgroundFiresListener implements EventListener
      */
     private function isAfterStepWithOutput(Event $event)
     {
-        if ($event instanceof AfterStepTested && ($this->stepSetupHadOutput || $event->hasOutput())) {
+        if ($event instanceof AfterTested
+            && $event instanceof StepEventWithOutput
+            && ($this->stepSetupHadOutput || $event->hasOutput())
+        ) {
             $this->stepSetupHadOutput = false;
 
             return true;

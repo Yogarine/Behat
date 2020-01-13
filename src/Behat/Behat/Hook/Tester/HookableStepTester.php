@@ -17,7 +17,7 @@ use Behat\Behat\Tester\StepTester;
 use Behat\Gherkin\Node\FeatureNode;
 use Behat\Gherkin\Node\StepNode;
 use Behat\Testwork\Environment\Environment;
-use Behat\Testwork\Hook\HookDispatcher;
+use Behat\Testwork\Hook\HookScopeDispatcher;
 use Behat\Testwork\Hook\Tester\Setup\HookedSetup;
 use Behat\Testwork\Hook\Tester\Setup\HookedTeardown;
 
@@ -33,17 +33,17 @@ final class HookableStepTester implements StepTester
      */
     private $baseTester;
     /**
-     * @var HookDispatcher
+     * @var HookScopeDispatcher
      */
     private $hookDispatcher;
 
     /**
      * Initializes tester.
      *
-     * @param StepTester     $baseTester
-     * @param HookDispatcher $hookDispatcher
+     * @param StepTester          $baseTester
+     * @param HookScopeDispatcher $hookDispatcher
      */
-    public function __construct(StepTester $baseTester, HookDispatcher $hookDispatcher)
+    public function __construct(StepTester $baseTester, HookScopeDispatcher $hookDispatcher)
     {
         $this->baseTester = $baseTester;
         $this->hookDispatcher = $hookDispatcher;

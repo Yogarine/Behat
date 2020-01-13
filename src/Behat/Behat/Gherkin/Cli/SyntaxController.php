@@ -94,6 +94,7 @@ final class SyntaxController implements Controller
      * @param array $keywords keywords list
      *
      * @return string
+     * @internal
      */
     public function dumpKeywords(array $keywords)
     {

@@ -5,19 +5,31 @@ use Behat\Behat\EventDispatcher\Event\AfterFeatureTested;
 use Behat\Behat\EventDispatcher\Event\EnvironmentAfterTested;
 use Behat\Behat\EventDispatcher\Event\BeforeFeatureTested;
 use Behat\Behat\EventDispatcher\Event\BeforeScenarioTested;
+use Behat\Behat\Output\Node\EventListener\FeatureDurationListener;
 use Behat\Gherkin\Node\FeatureNode;
 use Behat\Gherkin\Node\KeywordNodeInterface;
 use Behat\Gherkin\Node\ScenarioLikeInterface;
 use Behat\Testwork\Counter\Timer;
 use Behat\Testwork\Event\Event;
 use Behat\Testwork\Output\Formatter;
-use Behat\Testwork\Output\Node\EventListener\EventListener;
 
-final class JUnitDurationListener implements EventListener
+final class JUnitDurationListener implements FeatureDurationListener
 {
+    /**
+     * @var Timer[]
+     */
     private $scenarioTimerStore = array();
+    /**
+     * @var Timer[]
+     */
     private $featureTimerStore = array();
+    /**
+     * @var float[]
+     */
     private $resultStore = array();
+    /**
+     * @var float[]
+     */
     private $featureResultStore = array();
 
     /** @inheritdoc */
@@ -29,18 +41,29 @@ final class JUnitDurationListener implements EventListener
         $this->captureAfterFeatureEvent($event);
     }
 
+    /**
+     * @param ScenarioLikeInterface $scenario
+     * @return float|string
+     */
     public function getDuration(ScenarioLikeInterface $scenario)
     {
         $key = $this->getHash($scenario);
         return array_key_exists($key, $this->resultStore) ? $this->resultStore[$key] : '';
     }
 
+    /**
+     * @param FeatureNode $feature
+     * @return float|string
+     */
     public function getFeatureDuration(FeatureNode $feature)
     {
         $key = $this->getHash($feature);
         return array_key_exists($key, $this->featureResultStore) ? $this->featureResultStore[$key] : '';
     }
 
+    /**
+     * @param Event $event
+     */
     private function captureBeforeFeatureTested(Event $event)
     {
         if (!$event instanceof BeforeFeatureTested) {
@@ -50,6 +73,9 @@ final class JUnitDurationListener implements EventListener
         $this->featureTimerStore[$this->getHash($event->getFeature())] = $this->startTimer();
     }
 
+    /**
+     * @param Event $event
+     */
     private function captureBeforeScenarioEvent(Event $event)
     {
         if (!$event instanceof BeforeScenarioTested) {
@@ -59,6 +85,9 @@ final class JUnitDurationListener implements EventListener
         $this->scenarioTimerStore[$this->getHash($event->getScenario())] = $this->startTimer();
     }
 
+    /**
+     * @param Event $event
+     */
     private function captureAfterScenarioEvent(Event $event)
     {
         if (!$event instanceof EnvironmentAfterTested) {
@@ -73,6 +102,9 @@ final class JUnitDurationListener implements EventListener
         }
     }
 
+    /**
+     * @param Event $event
+     */
     private function captureAfterFeatureEvent(Event $event)
     {
         if (!$event instanceof AfterFeatureTested) {
@@ -87,12 +119,18 @@ final class JUnitDurationListener implements EventListener
         }
     }
 
+    /**
+     * @param KeywordNodeInterface $node
+     * @return string
+     */
     private function getHash(KeywordNodeInterface $node)
     {
         return spl_object_hash($node);
     }
 
-    /** @return Timer */
+    /**
+     * @return Timer
+     */
     private function startTimer()
     {
         $timer = new Timer();

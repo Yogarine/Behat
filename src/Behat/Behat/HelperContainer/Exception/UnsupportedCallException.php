@@ -18,7 +18,7 @@ use InvalidArgumentException;
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */
-final class UnsupportedCallException extends InvalidArgumentException implements HelperContainerException
+final class UnsupportedCallException extends InvalidArgumentException implements CallException
 {
     /**
      * @var Call

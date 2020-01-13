@@ -24,7 +24,7 @@ use Behat\Testwork\Tester\Result\TestResult;
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */
-final class BeforeStepTeardown extends StepTested implements BeforeTeardown
+final class BeforeStepTeardown extends StepTested implements BeforeTeardown, StepEventWithOutput
 {
     /**
      * @var FeatureNode

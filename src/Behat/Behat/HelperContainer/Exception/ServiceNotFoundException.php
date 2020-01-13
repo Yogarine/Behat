@@ -17,7 +17,7 @@ use InvalidArgumentException;
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */
-final class ServiceNotFoundException extends InvalidArgumentException implements HelperContainerException, NotFoundException
+final class ServiceNotFoundException extends InvalidArgumentException implements ServiceException, NotFoundException
 {
     /**
      * @var string

@@ -12,7 +12,6 @@ namespace Behat\Behat\EventDispatcher\Event;
 
 use Behat\Gherkin\Node\FeatureNode;
 use Behat\Gherkin\Node\ScenarioLikeInterface as Scenario;
-use Behat\Gherkin\Node\ScenarioNode;
 use Behat\Testwork\Environment\Environment;
 use Behat\Testwork\EventDispatcher\Event\BeforeTeardown;
 use Behat\Testwork\Tester\Result\TestResult;
@@ -71,7 +70,7 @@ final class BeforeScenarioTeardown extends ScenarioTested implements BeforeTeard
     /**
      * Returns scenario node.
      *
-     * @return ScenarioNode
+     * @return Scenario
      */
     public function getScenario()
     {

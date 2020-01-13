@@ -21,7 +21,7 @@ use Behat\Testwork\Tester\Setup\Setup;
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */
-final class AfterStepSetup extends StepTested implements AfterSetup
+final class AfterStepSetup extends StepTested implements AfterSetup, StepEventWithOutput
 {
     /**
      * @var FeatureNode
