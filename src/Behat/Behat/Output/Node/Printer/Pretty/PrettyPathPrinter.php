@@ -10,7 +10,8 @@
 
 namespace Behat\Behat\Output\Node\Printer\Pretty;
 
-use Behat\Behat\Output\Node\Printer\Helper\WidthCalculator;
+use Behat\Behat\Output\Node\Printer\Helper\ScenarioWidthCalculator;
+use Behat\Behat\Output\Node\Printer\PathPrinter;
 use Behat\Behat\Tester\Result\DefinedStepResult;
 use Behat\Behat\Tester\Result\StepResult;
 use Behat\Gherkin\Node\FeatureNode;
@@ -24,10 +25,10 @@ use Behat\Testwork\Output\Printer\OutputPrinter;
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */
-final class PrettyPathPrinter
+final class PrettyPathPrinter implements PathPrinter
 {
     /**
-     * @var WidthCalculator
+     * @var ScenarioWidthCalculator
      */
     private $widthCalculator;
     /**
@@ -38,10 +39,10 @@ final class PrettyPathPrinter
     /**
      * Initializes printer.
      *
-     * @param WidthCalculator $widthCalculator
+     * @param ScenarioWidthCalculator $widthCalculator
      * @param string          $basePath
      */
-    public function __construct(WidthCalculator $widthCalculator, $basePath)
+    public function __construct(ScenarioWidthCalculator $widthCalculator, $basePath)
     {
         $this->widthCalculator = $widthCalculator;
         $this->basePath = $basePath;

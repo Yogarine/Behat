@@ -11,6 +11,7 @@
 namespace Behat\Testwork\Hook\Tester\Setup;
 
 use Behat\Testwork\Call\CallResults;
+use Behat\Testwork\Hook\Hooked;
 use Behat\Testwork\Tester\Setup\Teardown;
 
 /**
@@ -18,7 +19,7 @@ use Behat\Testwork\Tester\Setup\Teardown;
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */
-final class HookedTeardown implements Teardown
+final class HookedTeardown implements Hooked, Teardown
 {
     /**
      * @var Teardown

@@ -19,7 +19,7 @@ use Behat\Gherkin\Node\StepNode;
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */
-final class WidthCalculator
+final class WidthCalculator implements ScenarioWidthCalculator
 {
     /**
      * Calculates scenario width.

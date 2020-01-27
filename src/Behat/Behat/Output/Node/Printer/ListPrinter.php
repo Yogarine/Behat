@@ -11,7 +11,7 @@
 namespace Behat\Behat\Output\Node\Printer;
 
 use Behat\Behat\Definition\Translator\TranslatorInterface;
-use Behat\Behat\Output\Node\Printer\Helper\ResultToStringConverter;
+use Behat\Behat\Output\Node\Printer\Helper\ResultConverter;
 use Behat\Behat\Output\Statistics\HookStat;
 use Behat\Behat\Output\Statistics\ScenarioStat;
 use Behat\Behat\Output\Statistics\StepStatV2;
@@ -25,10 +25,10 @@ use Behat\Testwork\Tester\Result\TestResult;
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */
-final class ListPrinter
+class ListPrinter
 {
     /**
-     * @var ResultToStringConverter
+     * @var ResultConverter
      */
     private $resultConverter;
     /**
@@ -47,13 +47,13 @@ final class ListPrinter
     /**
      * Initializes printer.
      *
-     * @param ResultToStringConverter $resultConverter
+     * @param ResultConverter $resultConverter
      * @param ExceptionPresenter      $exceptionPresenter
      * @param TranslatorInterface     $translator
      * @param string                  $basePath
      */
     public function __construct(
-        ResultToStringConverter $resultConverter,
+        ResultConverter $resultConverter,
         ExceptionPresenter $exceptionPresenter,
         TranslatorInterface $translator,
         $basePath

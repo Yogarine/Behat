@@ -19,14 +19,14 @@ use Behat\Testwork\Tester\Result\TestResult;
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */
-final class StepTextPainter
+final class StepTextPainter implements TextPainter
 {
     /**
      * @var SimplePatternTransformer
      */
     private $patternTransformer;
     /**
-     * @var ResultToStringConverter
+     * @var ResultConverter
      */
     private $resultConverter;
 
@@ -34,9 +34,9 @@ final class StepTextPainter
      * Initializes painter.
      *
      * @param SimplePatternTransformer      $patternTransformer
-     * @param ResultToStringConverter $resultConverter
+     * @param ResultConverter $resultConverter
      */
-    public function __construct(SimplePatternTransformer $patternTransformer, ResultToStringConverter $resultConverter)
+    public function __construct(SimplePatternTransformer $patternTransformer, ResultConverter $resultConverter)
     {
         $this->patternTransformer = $patternTransformer;
         $this->resultConverter = $resultConverter;

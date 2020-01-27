@@ -22,6 +22,11 @@ use Behat\Testwork\Counter\Timer;
 interface Statistics
 {
     /**
+     * Resets the statistics.
+     */
+    public function reset();
+
+    /**
      * Starts timer.
      */
     public function startTimer();

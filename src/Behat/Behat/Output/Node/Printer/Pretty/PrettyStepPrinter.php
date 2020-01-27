@@ -10,8 +10,9 @@
 
 namespace Behat\Behat\Output\Node\Printer\Pretty;
 
-use Behat\Behat\Output\Node\Printer\Helper\ResultToStringConverter;
-use Behat\Behat\Output\Node\Printer\Helper\StepTextPainter;
+use Behat\Behat\Output\Node\Printer\Helper\ResultConverter;
+use Behat\Behat\Output\Node\Printer\Helper\TextPainter;
+use Behat\Behat\Output\Node\Printer\PathPrinter;
 use Behat\Behat\Output\Node\Printer\StepPrinter;
 use Behat\Behat\Tester\Result\DefinedStepResult;
 use Behat\Behat\Tester\Result\ExecutedStepResult;
@@ -33,15 +34,15 @@ use Behat\Testwork\Tester\Result\ExceptionResult;
 final class PrettyStepPrinter implements StepPrinter
 {
     /**
-     * @var StepTextPainter
+     * @var TextPainter
      */
     private $textPainter;
     /**
-     * @var ResultToStringConverter
+     * @var ResultConverter
      */
     private $resultConverter;
     /**
-     * @var PrettyPathPrinter
+     * @var PathPrinter
      */
     private $pathPrinter;
     /**
@@ -60,17 +61,17 @@ final class PrettyStepPrinter implements StepPrinter
     /**
      * Initializes printer.
      *
-     * @param StepTextPainter         $textPainter
-     * @param ResultToStringConverter $resultConverter
-     * @param PrettyPathPrinter       $pathPrinter
+     * @param TextPainter             $textPainter
+     * @param ResultConverter $resultConverter
+     * @param PathPrinter       $pathPrinter
      * @param ExceptionPresenter      $exceptionPresenter
      * @param integer                 $indentation
      * @param integer                 $subIndentation
      */
     public function __construct(
-        StepTextPainter $textPainter,
-        ResultToStringConverter $resultConverter,
-        PrettyPathPrinter $pathPrinter,
+        TextPainter $textPainter,
+        ResultConverter $resultConverter,
+        PathPrinter $pathPrinter,
         ExceptionPresenter $exceptionPresenter,
         $indentation = 4,
         $subIndentation = 2

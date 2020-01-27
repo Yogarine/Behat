@@ -17,29 +17,29 @@ use Behat\Behat\EventDispatcher\Event\AfterStepTested;
 use Behat\Behat\EventDispatcher\Event\BeforeFeatureTested;
 use Behat\Behat\EventDispatcher\Event\ScenarioTested;
 use Behat\Behat\EventDispatcher\Event\StepTested;
+use Behat\Behat\Output\Node\EventListener\FeatureElementListener;
 use Behat\Behat\Output\Node\Printer\FeaturePrinter;
-use Behat\Behat\Output\Node\Printer\JUnit\JUnitScenarioPrinter;
+use Behat\Behat\Output\Node\Printer\ScenarioOpenTagPrinter;
 use Behat\Behat\Output\Node\Printer\SetupPrinter;
 use Behat\Behat\Output\Node\Printer\StepPrinter;
 use Behat\Gherkin\Node\FeatureNode;
 use Behat\Testwork\Event\Event;
 use Behat\Testwork\EventDispatcher\Event\AfterSetup;
 use Behat\Testwork\Output\Formatter;
-use Behat\Testwork\Output\Node\EventListener\EventListener;
 
 /**
  * Listens to feature, scenario and step events and calls appropriate printers.
  *
  * @author Wouter J <wouter@wouterj.nl>
  */
-final class JUnitFeatureElementListener implements EventListener
+final class JUnitFeatureElementListener implements FeatureElementListener
 {
     /**
      * @var FeaturePrinter
      */
     private $featurePrinter;
     /**
-     * @var JUnitScenarioPrinter
+     * @var ScenarioOpenTagPrinter
      */
     private $scenarioPrinter;
     /**
@@ -71,12 +71,12 @@ final class JUnitFeatureElementListener implements EventListener
      * Initializes listener.
      *
      * @param FeaturePrinter $featurePrinter
-     * @param JUnitScenarioPrinter $scenarioPrinter
+     * @param ScenarioOpenTagPrinter $scenarioPrinter
      * @param StepPrinter $stepPrinter
      * @param SetupPrinter $setupPrinter
      */
     public function __construct(FeaturePrinter $featurePrinter,
-                                JUnitScenarioPrinter $scenarioPrinter,
+                                ScenarioOpenTagPrinter $scenarioPrinter,
                                 StepPrinter $stepPrinter,
                                 SetupPrinter $setupPrinter)
     {

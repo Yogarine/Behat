@@ -10,7 +10,7 @@
 
 namespace Behat\Behat\Output\Node\Printer\Pretty;
 
-use Behat\Behat\Output\Node\Printer\Helper\ResultToStringConverter;
+use Behat\Behat\Output\Node\Printer\Helper\ResultConverter;
 use Behat\Behat\Output\Node\Printer\OutlineTablePrinter;
 use Behat\Behat\Output\Node\Printer\ScenarioPrinter;
 use Behat\Behat\Output\Node\Printer\StepPrinter;
@@ -39,7 +39,7 @@ final class PrettyOutlineTablePrinter implements OutlineTablePrinter
      */
     private $stepPrinter;
     /**
-     * @var ResultToStringConverter
+     * @var ResultConverter
      */
     private $resultConverter;
     /**
@@ -56,14 +56,14 @@ final class PrettyOutlineTablePrinter implements OutlineTablePrinter
      *
      * @param ScenarioPrinter         $scenarioPrinter
      * @param StepPrinter             $stepPrinter
-     * @param ResultToStringConverter $resultConverter
+     * @param ResultConverter $resultConverter
      * @param integer                 $indentation
      * @param integer                 $subIndentation
      */
     public function __construct(
         ScenarioPrinter $scenarioPrinter,
         StepPrinter $stepPrinter,
-        ResultToStringConverter $resultConverter,
+        ResultConverter $resultConverter,
         $indentation = 4,
         $subIndentation = 2
     ) {

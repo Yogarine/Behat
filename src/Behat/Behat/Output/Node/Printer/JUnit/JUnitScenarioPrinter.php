@@ -12,13 +12,13 @@ namespace Behat\Behat\Output\Node\Printer\JUnit;
 
 use Behat\Behat\Output\Node\EventListener\DurationListener;
 use Behat\Behat\Output\Node\EventListener\JUnit\JUnitOutlineStoreListener;
-use Behat\Behat\Output\Node\Printer\Helper\ResultToStringConverter;
+use Behat\Behat\Output\Node\Printer\Helper\ResultConverter;
+use Behat\Behat\Output\Node\Printer\ScenarioOpenTagPrinter;
 use Behat\Gherkin\Node\ExampleNode;
 use Behat\Gherkin\Node\FeatureNode;
 use Behat\Gherkin\Node\OutlineNode;
 use Behat\Gherkin\Node\ScenarioLikeInterface;
 use Behat\Testwork\Output\Formatter;
-use Behat\Testwork\Output\Printer\JUnitOutputPrinter;
 use Behat\Testwork\Tester\Result\TestResult;
 
 /**
@@ -26,10 +26,10 @@ use Behat\Testwork\Tester\Result\TestResult;
  *
  * @author Wouter J <wouter@wouterj.nl>
  */
-final class JUnitScenarioPrinter
+final class JUnitScenarioPrinter implements ScenarioOpenTagPrinter
 {
     /**
-     * @var ResultToStringConverter
+     * @var ResultConverter
      */
     private $resultConverter;
 
@@ -54,11 +54,11 @@ final class JUnitScenarioPrinter
     private $durationListener;
 
     /**
-     * @param ResultToStringConverter   $resultConverter
+     * @param ResultConverter   $resultConverter
      * @param JUnitOutlineStoreListener $outlineListener
      * @param DurationListener|null     $durationListener
      */
-    public function __construct(ResultToStringConverter $resultConverter, JUnitOutlineStoreListener $outlineListener, DurationListener $durationListener = null)
+    public function __construct(ResultConverter $resultConverter, JUnitOutlineStoreListener $outlineListener, DurationListener $durationListener = null)
     {
         $this->resultConverter = $resultConverter;
         $this->outlineStoreListener = $outlineListener;
@@ -78,7 +78,6 @@ final class JUnitScenarioPrinter
             $name = $this->buildExampleName($scenario);
         }
 
-        /** @var JUnitOutputPrinter $outputPrinter */
         $outputPrinter = $formatter->getOutputPrinter();
 
         $outputPrinter->addTestcase(array(

@@ -65,13 +65,24 @@ final class TotalStatistics implements Statistics
      */
     public function __construct()
     {
-        $this->resetAllCounters();
+        $this->reset();
 
         $this->timer = new Timer();
         $this->memory = new Memory();
     }
 
+    /**
+     * @deprecated
+     */
     public function resetAllCounters()
+    {
+        $this->reset();
+    }
+
+    /**
+     * Resets the statistics.
+     */
+    public function reset()
     {
         $this->scenarioCounters = $this->stepCounters = array(
             TestResult::PASSED    => 0,

@@ -10,7 +10,7 @@
 
 namespace Behat\Behat\Output\Node\Printer\Progress;
 
-use Behat\Behat\Output\Node\Printer\Helper\ResultToStringConverter;
+use Behat\Behat\Output\Node\Printer\Helper\ResultConverter;
 use Behat\Behat\Output\Node\Printer\StepPrinter;
 use Behat\Behat\Tester\Result\StepResult;
 use Behat\Gherkin\Node\ScenarioLikeInterface as Scenario;
@@ -26,7 +26,7 @@ use Behat\Testwork\Tester\Result\TestResult;
 final class ProgressStepPrinter implements StepPrinter
 {
     /**
-     * @var ResultToStringConverter
+     * @var ResultConverter
      */
     private $resultConverter;
     /**
@@ -37,9 +37,9 @@ final class ProgressStepPrinter implements StepPrinter
     /**
      * Initializes printer.
      *
-     * @param ResultToStringConverter $resultConverter
+     * @param ResultConverter $resultConverter
      */
-    public function __construct(ResultToStringConverter $resultConverter)
+    public function __construct(ResultConverter $resultConverter)
     {
         $this->resultConverter = $resultConverter;
     }

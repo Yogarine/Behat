@@ -10,6 +10,7 @@
 
 namespace Behat\Behat\Output\Node\Printer\Pretty;
 
+use Behat\Behat\Output\Node\Printer\PathPrinter;
 use Behat\Behat\Output\Node\Printer\ScenarioPrinter;
 use Behat\Gherkin\Node\FeatureNode;
 use Behat\Gherkin\Node\ScenarioLikeInterface as Scenario;
@@ -26,7 +27,7 @@ use Behat\Testwork\Tester\Result\TestResult;
 final class PrettyScenarioPrinter implements ScenarioPrinter
 {
     /**
-     * @var PrettyPathPrinter
+     * @var PathPrinter
      */
     private $pathPrinter;
     /**
@@ -41,11 +42,11 @@ final class PrettyScenarioPrinter implements ScenarioPrinter
     /**
      * Initializes printer.
      *
-     * @param PrettyPathPrinter $pathPrinter
+     * @param PathPrinter $pathPrinter
      * @param integer           $indentation
      * @param integer           $subIndentation
      */
-    public function __construct(PrettyPathPrinter $pathPrinter, $indentation = 2, $subIndentation = 2)
+    public function __construct(PathPrinter $pathPrinter, $indentation = 2, $subIndentation = 2)
     {
         $this->pathPrinter = $pathPrinter;
         $this->indentText = str_repeat(' ', intval($indentation));

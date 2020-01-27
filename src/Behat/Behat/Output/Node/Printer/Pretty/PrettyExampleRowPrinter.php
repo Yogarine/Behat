@@ -12,7 +12,7 @@ namespace Behat\Behat\Output\Node\Printer\Pretty;
 
 use Behat\Behat\EventDispatcher\Event\AfterStepTested;
 use Behat\Behat\Output\Node\Printer\ExampleRowPrinter;
-use Behat\Behat\Output\Node\Printer\Helper\ResultToStringConverter;
+use Behat\Behat\Output\Node\Printer\Helper\ResultConverter;
 use Behat\Behat\Tester\Result\ExecutedStepResult;
 use Behat\Behat\Tester\Result\StepResult;
 use Behat\Gherkin\Node\ExampleNode;
@@ -32,7 +32,7 @@ use Behat\Testwork\Tester\Result\TestResults;
 final class PrettyExampleRowPrinter implements ExampleRowPrinter
 {
     /**
-     * @var ResultToStringConverter
+     * @var ResultConverter
      */
     private $resultConverter;
     /**
@@ -51,13 +51,13 @@ final class PrettyExampleRowPrinter implements ExampleRowPrinter
     /**
      * Initializes printer.
      *
-     * @param ResultToStringConverter $resultConverter
+     * @param ResultConverter $resultConverter
      * @param ExceptionPresenter      $exceptionPresenter
      * @param integer                 $indentation
      * @param integer                 $subIndentation
      */
     public function __construct(
-        ResultToStringConverter $resultConverter,
+        ResultConverter $resultConverter,
         ExceptionPresenter $exceptionPresenter,
         $indentation = 6,
         $subIndentation = 2

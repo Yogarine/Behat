@@ -10,7 +10,7 @@
 
 namespace Behat\Behat\Output\Node\Printer\Pretty;
 
-use Behat\Behat\Output\Node\Printer\Helper\ResultToStringConverter;
+use Behat\Behat\Output\Node\Printer\Helper\ResultConverter;
 use Behat\Behat\Output\Node\Printer\SetupPrinter;
 use Behat\Testwork\Call\CallResult;
 use Behat\Testwork\Exception\ExceptionPresenter;
@@ -30,7 +30,7 @@ use Behat\Testwork\Tester\Setup\Teardown;
 final class PrettySetupPrinter implements SetupPrinter
 {
     /**
-     * @var ResultToStringConverter
+     * @var ResultConverter
      */
     private $resultConverter;
     /**
@@ -53,14 +53,14 @@ final class PrettySetupPrinter implements SetupPrinter
     /**
      * Initializes printer.
      *
-     * @param ResultToStringConverter $resultConverter
+     * @param ResultConverter $resultConverter
      * @param ExceptionPresenter      $exceptionPresenter
      * @param integer                 $indentation
      * @param bool                 $newlineBefore
      * @param bool                 $newlineAfter
      */
     public function __construct(
-        ResultToStringConverter $resultConverter,
+        ResultConverter $resultConverter,
         ExceptionPresenter $exceptionPresenter,
         $indentation = 0,
         $newlineBefore = false,

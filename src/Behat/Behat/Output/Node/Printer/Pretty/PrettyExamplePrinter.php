@@ -11,6 +11,7 @@
 namespace Behat\Behat\Output\Node\Printer\Pretty;
 
 use Behat\Behat\Output\Node\Printer\ExamplePrinter;
+use Behat\Behat\Output\Node\Printer\PathPrinter;
 use Behat\Gherkin\Node\ExampleNode;
 use Behat\Gherkin\Node\FeatureNode;
 use Behat\Testwork\Output\Formatter;
@@ -25,7 +26,7 @@ use Behat\Testwork\Tester\Result\TestResult;
 final class PrettyExamplePrinter implements ExamplePrinter
 {
     /**
-     * @var PrettyPathPrinter
+     * @var PathPrinter
      */
     private $pathPrinter;
     /**
@@ -36,10 +37,10 @@ final class PrettyExamplePrinter implements ExamplePrinter
     /**
      * Initializes printer.
      *
-     * @param PrettyPathPrinter $pathPrinter
+     * @param PathPrinter $pathPrinter
      * @param integer           $indentation
      */
-    public function __construct(PrettyPathPrinter $pathPrinter, $indentation = 6)
+    public function __construct(PathPrinter $pathPrinter, $indentation = 6)
     {
         $this->pathPrinter = $pathPrinter;
         $this->indentText = str_repeat(' ', intval($indentation));

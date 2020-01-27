@@ -11,7 +11,7 @@
 namespace Behat\Behat\Output\Node\Printer;
 
 use Behat\Behat\Definition\Translator\TranslatorInterface;
-use Behat\Behat\Output\Node\Printer\Helper\ResultToStringConverter;
+use Behat\Behat\Output\Node\Printer\Helper\ResultConverter;
 use Behat\Testwork\Output\Printer\OutputPrinter;
 
 /**
@@ -19,10 +19,10 @@ use Behat\Testwork\Output\Printer\OutputPrinter;
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */
-final class CounterPrinter
+class CounterPrinter
 {
     /**
-     * @var ResultToStringConverter
+     * @var ResultConverter
      */
     private $resultConverter;
     /**
@@ -33,10 +33,10 @@ final class CounterPrinter
     /**
      * Initializes printer.
      *
-     * @param ResultToStringConverter $resultConverter
-     * @param TranslatorInterface     $translator
+     * @param ResultConverter     $resultConverter
+     * @param TranslatorInterface $translator
      */
-    public function __construct(ResultToStringConverter $resultConverter, TranslatorInterface $translator)
+    public function __construct(ResultConverter $resultConverter, TranslatorInterface $translator)
     {
         $this->resultConverter = $resultConverter;
         $this->translator = $translator;

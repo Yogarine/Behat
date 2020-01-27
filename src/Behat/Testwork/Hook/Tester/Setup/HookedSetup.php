@@ -11,6 +11,7 @@
 namespace Behat\Testwork\Hook\Tester\Setup;
 
 use Behat\Testwork\Call\CallResults;
+use Behat\Testwork\Hook\Hooked;
 use Behat\Testwork\Tester\Setup\Setup;
 
 /**
@@ -18,7 +19,7 @@ use Behat\Testwork\Tester\Setup\Setup;
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */
-final class HookedSetup implements Setup
+final class HookedSetup implements Hooked, Setup
 {
     /**
      * @var Setup
