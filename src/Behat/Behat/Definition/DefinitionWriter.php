@@ -11,7 +11,7 @@
 namespace Behat\Behat\Definition;
 
 use Behat\Behat\Definition\Printer\DefinitionPrinter;
-use Behat\Testwork\Environment\EnvironmentManager;
+use Behat\Testwork\Environment\EnvironmentRegistry;
 use Behat\Testwork\Suite\Suite;
 
 /**
@@ -22,7 +22,7 @@ use Behat\Testwork\Suite\Suite;
 final class DefinitionWriter implements SuiteDefinitionWriter
 {
     /**
-     * @var EnvironmentManager
+     * @var EnvironmentRegistry
      */
     private $environmentManager;
     /**
@@ -33,10 +33,10 @@ final class DefinitionWriter implements SuiteDefinitionWriter
     /**
      * Initializes writer.
      *
-     * @param EnvironmentManager   $environmentManager
+     * @param EnvironmentRegistry   $environmentManager
      * @param EnvironmentDefinitionRepository $repository
      */
-    public function __construct(EnvironmentManager $environmentManager, EnvironmentDefinitionRepository $repository)
+    public function __construct(EnvironmentRegistry $environmentManager, EnvironmentDefinitionRepository $repository)
     {
         $this->environmentManager = $environmentManager;
         $this->repository = $repository;

@@ -10,7 +10,7 @@
 
 namespace Behat\Testwork\Tester\Runtime;
 
-use Behat\Testwork\Environment\EnvironmentManager;
+use Behat\Testwork\Environment\EnvironmentRegistry;
 use Behat\Testwork\Specification\GroupedSpecificationIterator;
 use Behat\Testwork\Tester\Exercise;
 use Behat\Testwork\Tester\Result\IntegerTestResult;
@@ -29,7 +29,7 @@ use Behat\Testwork\Tester\SuiteTester;
 final class RuntimeExercise implements Exercise
 {
     /**
-     * @var EnvironmentManager
+     * @var EnvironmentRegistry
      */
     private $envManager;
     /**
@@ -40,10 +40,10 @@ final class RuntimeExercise implements Exercise
     /**
      * Initializes tester.
      *
-     * @param EnvironmentManager $envManager
+     * @param EnvironmentRegistry $envManager
      * @param SuiteTester        $suiteTester
      */
-    public function __construct(EnvironmentManager $envManager, SuiteTester $suiteTester)
+    public function __construct(EnvironmentRegistry $envManager, SuiteTester $suiteTester)
     {
         $this->envManager = $envManager;
         $this->suiteTester = $suiteTester;

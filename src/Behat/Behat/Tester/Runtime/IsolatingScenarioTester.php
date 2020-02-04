@@ -14,7 +14,7 @@ use Behat\Behat\Tester\ScenarioTester;
 use Behat\Gherkin\Node\FeatureNode;
 use Behat\Gherkin\Node\ScenarioInterface as Scenario;
 use Behat\Testwork\Environment\Environment;
-use Behat\Testwork\Environment\EnvironmentManager;
+use Behat\Testwork\Environment\EnvironmentRegistry;
 use Behat\Testwork\Tester\Result\IntegerTestResult;
 use Behat\Testwork\Tester\Result\TestResult;
 use Behat\Testwork\Tester\Result\TestWithSetupResult;
@@ -33,7 +33,7 @@ final class IsolatingScenarioTester implements ScenarioTester
      */
     private $decoratedTester;
     /**
-     * @var EnvironmentManager
+     * @var EnvironmentRegistry
      */
     private $envManager;
 
@@ -41,9 +41,9 @@ final class IsolatingScenarioTester implements ScenarioTester
      * Initialises tester.
      *
      * @param ScenarioTester     $decoratedTester
-     * @param EnvironmentManager $envManager
+     * @param EnvironmentRegistry $envManager
      */
-    public function __construct(ScenarioTester $decoratedTester, EnvironmentManager $envManager)
+    public function __construct(ScenarioTester $decoratedTester, EnvironmentRegistry $envManager)
     {
         $this->decoratedTester = $decoratedTester;
         $this->envManager = $envManager;

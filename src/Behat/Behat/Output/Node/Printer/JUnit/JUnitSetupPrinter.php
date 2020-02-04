@@ -7,8 +7,7 @@ use Behat\Testwork\Call\CallResult;
 use Behat\Testwork\Call\CallResults;
 use Behat\Testwork\Exception\ExceptionPresenter;
 use Behat\Testwork\Hook\Call\HookCall;
-use Behat\Testwork\Hook\Tester\Setup\HookedSetup;
-use Behat\Testwork\Hook\Tester\Setup\HookedTeardown;
+use Behat\Testwork\Hook\Hooked;
 use Behat\Testwork\Output\Formatter;
 use Behat\Testwork\Output\Printer\JUnitOutputPrinter;
 use Behat\Testwork\Tester\Setup\Setup;
@@ -34,7 +33,7 @@ class JUnitSetupPrinter implements SetupPrinter
     public function printSetup(Formatter $formatter, Setup $setup)
     {
         if (!$setup->isSuccessful()) {
-            if ($setup instanceof HookedSetup) {
+            if ($setup instanceof Hooked) {
                 $this->handleHookCalls($formatter, $setup->getHookCallResults(), 'setup');
             }
         }
@@ -46,7 +45,7 @@ class JUnitSetupPrinter implements SetupPrinter
     public function printTeardown(Formatter $formatter, Teardown $teardown)
     {
         if (!$teardown->isSuccessful()) {
-            if ($teardown instanceof HookedTeardown) {
+            if ($teardown instanceof Hooked) {
                 $this->handleHookCalls($formatter, $teardown->getHookCallResults(), 'teardown');
             }
         }

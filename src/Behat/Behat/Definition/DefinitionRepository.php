@@ -12,7 +12,7 @@ namespace Behat\Behat\Definition;
 
 use Behat\Behat\Definition\Exception\RedundantStepException;
 use Behat\Testwork\Environment\Environment;
-use Behat\Testwork\Environment\EnvironmentManager;
+use Behat\Testwork\Environment\EnvironmentRegistry;
 
 /**
  * Provides step definitions using environment manager.
@@ -22,16 +22,16 @@ use Behat\Testwork\Environment\EnvironmentManager;
 final class DefinitionRepository implements EnvironmentDefinitionRepository
 {
     /**
-     * @var EnvironmentManager
+     * @var EnvironmentRegistry
      */
     private $environmentManager;
 
     /**
      * Initializes repository.
      *
-     * @param EnvironmentManager $environmentManager
+     * @param EnvironmentRegistry $environmentManager
      */
-    public function __construct(EnvironmentManager $environmentManager)
+    public function __construct(EnvironmentRegistry $environmentManager)
     {
         $this->environmentManager = $environmentManager;
     }

@@ -12,7 +12,7 @@ namespace Behat\Behat\Transformation;
 
 use Behat\Testwork\Call\Callee;
 use Behat\Testwork\Environment\Environment;
-use Behat\Testwork\Environment\EnvironmentManager;
+use Behat\Testwork\Environment\EnvironmentRegistry;
 
 /**
  * Provides transformations using environment manager.
@@ -22,16 +22,16 @@ use Behat\Testwork\Environment\EnvironmentManager;
 final class TransformationRepository
 {
     /**
-     * @var EnvironmentManager
+     * @var EnvironmentRegistry
      */
     private $environmentManager;
 
     /**
      * Initializes repository.
      *
-     * @param EnvironmentManager $environmentManager
+     * @param EnvironmentRegistry $environmentManager
      */
-    public function __construct(EnvironmentManager $environmentManager)
+    public function __construct(EnvironmentRegistry $environmentManager)
     {
         $this->environmentManager = $environmentManager;
     }

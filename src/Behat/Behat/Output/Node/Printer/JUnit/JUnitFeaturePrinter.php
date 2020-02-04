@@ -12,7 +12,7 @@ namespace Behat\Behat\Output\Node\Printer\JUnit;
 
 use Behat\Behat\Output\Node\EventListener\FeatureDurationListener;
 use Behat\Behat\Output\Node\Printer\FeaturePrinter;
-use Behat\Behat\Output\Statistics\PhaseStatistics;
+use Behat\Behat\Output\Statistics\Statistics;
 use Behat\Behat\Tester\Result\StepResult;
 use Behat\Gherkin\Node\FeatureNode;
 use Behat\Testwork\Output\Formatter;
@@ -27,7 +27,7 @@ use Behat\Testwork\Tester\Result\TestResult;
 final class JUnitFeaturePrinter implements FeaturePrinter
 {
     /**
-     * @var PhaseStatistics
+     * @var Statistics
      */
     private $statistics;
 
@@ -37,10 +37,10 @@ final class JUnitFeaturePrinter implements FeaturePrinter
     private $durationListener;
 
     /**
-     * @param PhaseStatistics              $statistics
+     * @param Statistics                   $statistics
      * @param FeatureDurationListener|null $durationListener
      */
-    public function __construct(PhaseStatistics $statistics, FeatureDurationListener $durationListener = null)
+    public function __construct(Statistics $statistics, FeatureDurationListener $durationListener = null)
     {
         $this->statistics = $statistics;
         $this->durationListener = $durationListener;

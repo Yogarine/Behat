@@ -11,7 +11,7 @@
 namespace Behat\Behat\Output\Node\Printer\JUnit;
 
 use Behat\Behat\Output\Node\Printer\SuitePrinter;
-use Behat\Behat\Output\Statistics\PhaseStatistics;
+use Behat\Behat\Output\Statistics\Statistics;
 use Behat\Testwork\Output\Formatter;
 use Behat\Testwork\Output\Printer\JUnitOutputPrinter;
 use Behat\Testwork\Suite\Suite;
@@ -24,11 +24,11 @@ use Behat\Testwork\Suite\Suite;
 final class JUnitSuitePrinter implements SuitePrinter
 {
     /**
-     * @var PhaseStatistics
+     * @var Statistics
      */
     private $statistics;
 
-    public function __construct(PhaseStatistics $statistics = null)
+    public function __construct(Statistics $statistics = null)
     {
         $this->statistics = $statistics;
     }

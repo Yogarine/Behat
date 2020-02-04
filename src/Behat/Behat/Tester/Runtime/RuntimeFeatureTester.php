@@ -14,7 +14,7 @@ use Behat\Behat\Tester\OutlineTester;
 use Behat\Behat\Tester\ScenarioTester;
 use Behat\Gherkin\Node\OutlineNode;
 use Behat\Testwork\Environment\Environment;
-use Behat\Testwork\Environment\EnvironmentManager;
+use Behat\Testwork\Environment\EnvironmentRegistry;
 use Behat\Testwork\Tester\Result\IntegerTestResult;
 use Behat\Testwork\Tester\Result\TestResult;
 use Behat\Testwork\Tester\Result\TestResults;
@@ -39,7 +39,7 @@ final class RuntimeFeatureTester implements SpecificationTester
      */
     private $outlineTester;
     /**
-     * @var EnvironmentManager
+     * @var EnvironmentRegistry
      */
     private $envManager;
 
@@ -48,14 +48,14 @@ final class RuntimeFeatureTester implements SpecificationTester
      *
      * @param ScenarioTester     $scenarioTester
      * @param OutlineTester      $outlineTester
-     * @param EnvironmentManager $envManager
+     * @param EnvironmentRegistry $envManager
      *
      * TODO: Remove EnvironmentManager parameter in next major
      */
     public function __construct(
         ScenarioTester $scenarioTester,
         OutlineTester $outlineTester,
-        EnvironmentManager $envManager
+        EnvironmentRegistry $envManager
     ) {
         $this->scenarioTester = $scenarioTester;
         $this->outlineTester = $outlineTester;

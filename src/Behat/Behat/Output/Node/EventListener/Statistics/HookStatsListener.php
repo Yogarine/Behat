@@ -21,6 +21,8 @@ use Behat\Testwork\Hook\Tester\Setup\HookedSetup;
 use Behat\Testwork\Hook\Tester\Setup\HookedTeardown;
 use Behat\Testwork\Output\Formatter;
 use Behat\Testwork\Output\Node\EventListener\EventListener;
+use Behat\Testwork\Tester\Setup\Setup;
+use Behat\Testwork\Tester\Setup\Teardown;
 
 /**
  * Listens and records hook stats.
@@ -77,9 +79,9 @@ final class HookStatsListener implements EventListener
     /**
      * Captures before hook stats.
      *
-     * @param HookedSetup $setup
+     * @param Setup $setup
      */
-    private function captureBeforeHookStats(HookedSetup $setup)
+    private function captureBeforeHookStats(Setup $setup)
     {
         $hookCallResults = $setup->getHookCallResults();
 
@@ -91,9 +93,9 @@ final class HookStatsListener implements EventListener
     /**
      * Captures before hook stats.
      *
-     * @param HookedTeardown $teardown
+     * @param Teardown $teardown
      */
-    private function captureAfterHookStats(HookedTeardown $teardown)
+    private function captureAfterHookStats(Teardown $teardown)
     {
         $hookCallResults = $teardown->getHookCallResults();
 

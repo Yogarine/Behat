@@ -11,7 +11,7 @@
 namespace Behat\Behat\Output\Node\Printer\JUnit;
 
 use Behat\Behat\Output\Node\EventListener\DurationListener;
-use Behat\Behat\Output\Node\EventListener\JUnit\JUnitOutlineStoreListener;
+use Behat\Behat\Output\Node\EventListener\OutlineStoreListener;
 use Behat\Behat\Output\Node\Printer\Helper\ResultConverter;
 use Behat\Behat\Output\Node\Printer\ScenarioOpenTagPrinter;
 use Behat\Gherkin\Node\ExampleNode;
@@ -34,7 +34,7 @@ final class JUnitScenarioPrinter implements ScenarioOpenTagPrinter
     private $resultConverter;
 
     /**
-     * @var JUnitOutlineStoreListener
+     * @var OutlineStoreListener
      */
     private $outlineStoreListener;
 
@@ -55,10 +55,10 @@ final class JUnitScenarioPrinter implements ScenarioOpenTagPrinter
 
     /**
      * @param ResultConverter   $resultConverter
-     * @param JUnitOutlineStoreListener $outlineListener
+     * @param OutlineStoreListener $outlineListener
      * @param DurationListener|null     $durationListener
      */
-    public function __construct(ResultConverter $resultConverter, JUnitOutlineStoreListener $outlineListener, DurationListener $durationListener = null)
+    public function __construct(ResultConverter $resultConverter, OutlineStoreListener $outlineListener, DurationListener $durationListener = null)
     {
         $this->resultConverter = $resultConverter;
         $this->outlineStoreListener = $outlineListener;

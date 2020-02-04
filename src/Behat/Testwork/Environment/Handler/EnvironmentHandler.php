@@ -11,13 +11,13 @@
 namespace Behat\Testwork\Environment\Handler;
 
 use Behat\Testwork\Environment\Environment;
-use Behat\Testwork\Environment\EnvironmentManager;
+use Behat\Testwork\Environment\EnvironmentRegistry;
 use Behat\Testwork\Suite\Suite;
 
 /**
  * Handles test environment building and isolation.
  *
- * @see EnvironmentManager
+ * @see EnvironmentRegistry
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */

@@ -12,14 +12,14 @@ namespace Behat\Testwork\Hook\Scope;
 
 use Behat\Testwork\Environment\Environment;
 use Behat\Testwork\Hook\HookDispatcher;
-use Behat\Testwork\Hook\HookRepository;
+use Behat\Testwork\Hook\EnvironmentHookRepository;
 use Behat\Testwork\Suite\Suite;
 
 /**
  * Represents an object used to find appropriate hooks.
  *
  * @see HookDispatcher
- * @see HookRepository
+ * @see EnvironmentHookRepository
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */

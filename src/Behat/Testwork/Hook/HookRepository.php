@@ -12,7 +12,7 @@ namespace Behat\Testwork\Hook;
 
 use Behat\Testwork\Call\Callee;
 use Behat\Testwork\Environment\Environment;
-use Behat\Testwork\Environment\EnvironmentManager;
+use Behat\Testwork\Environment\EnvironmentRegistry;
 use Behat\Testwork\Hook\Scope\HookScope;
 
 /**
@@ -20,19 +20,19 @@ use Behat\Testwork\Hook\Scope\HookScope;
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */
-final class HookRepository
+final class HookRepository implements EnvironmentHookRepository
 {
     /**
-     * @var EnvironmentManager
+     * @var EnvironmentRegistry
      */
     private $environmentManager;
 
     /**
      * Initializes repository.
      *
-     * @param EnvironmentManager $environmentManager
+     * @param EnvironmentRegistry $environmentManager
      */
-    public function __construct(EnvironmentManager $environmentManager)
+    public function __construct(EnvironmentRegistry $environmentManager)
     {
         $this->environmentManager = $environmentManager;
     }
