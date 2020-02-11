@@ -11,12 +11,12 @@
 namespace Behat\Testwork\Call\Filter;
 
 use Behat\Testwork\Call\Call;
-use Behat\Testwork\Call\CallCenter;
+use Behat\Testwork\Call\Caller;
 
 /**
  * Filters call before its being made and returns a new call.
  *
- * @see CallCenter
+ * @see Caller
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */

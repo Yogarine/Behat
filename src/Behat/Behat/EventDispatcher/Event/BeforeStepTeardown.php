@@ -83,7 +83,7 @@ final class BeforeStepTeardown extends StepTested implements BeforeTeardown, Ste
     /**
      * Returns current test result.
      *
-     * @return TestResult
+     * @return StepResult
      */
     public function getTestResult()
     {

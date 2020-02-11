@@ -15,7 +15,7 @@ namespace Behat\Behat\Output\Statistics;
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */
-class StepStatV2 extends StepStat
+final class StepStatV2 extends StepStat implements ScenarioStepStat
 {
     /**
      * @var string

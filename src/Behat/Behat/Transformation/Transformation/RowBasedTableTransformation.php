@@ -15,7 +15,7 @@ use Behat\Behat\Transformation\Call\TransformationCall;
 use Behat\Behat\Transformation\SimpleArgumentTransformation;
 use Behat\Gherkin\Exception\NodeException;
 use Behat\Gherkin\Node\TableNode;
-use Behat\Testwork\Call\CallCenter;
+use Behat\Testwork\Call\Caller;
 use Behat\Testwork\Call\RuntimeCallee;
 use ReflectionMethod;
 
@@ -86,7 +86,7 @@ final class RowBasedTableTransformation extends RuntimeCallee implements SimpleA
     /**
      * {@inheritdoc}
      */
-    public function transformArgument(CallCenter $callCenter, FeatureStepCall $definitionCall, $argumentIndex, $argumentValue)
+    public function transformArgument(Caller $callCenter, FeatureStepCall $definitionCall, $argumentIndex, $argumentValue)
     {
         $call = new TransformationCall(
             $definitionCall->getEnvironment(),

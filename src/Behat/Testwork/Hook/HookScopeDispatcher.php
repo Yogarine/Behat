@@ -10,7 +10,7 @@
 
 namespace Behat\Testwork\Hook;
 
-use Behat\Testwork\Call\CallResults;
+use Behat\Testwork\Call\Results;
 use Behat\Testwork\Hook\Scope\HookScope;
 
 /**
@@ -25,7 +25,7 @@ interface HookScopeDispatcher
      *
      * @param HookScope $scope
      *
-     * @return CallResults
+     * @return Results
      */
     public function dispatchScopeHooks(HookScope $scope);
 }

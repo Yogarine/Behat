@@ -10,7 +10,7 @@
 
 namespace Behat\Testwork\Hook\Tester\Setup;
 
-use Behat\Testwork\Call\CallResults;
+use Behat\Testwork\Call\Results;
 use Behat\Testwork\Hook\Hooked;
 use Behat\Testwork\Tester\Setup\Teardown;
 
@@ -26,7 +26,7 @@ final class HookedTeardown implements Hooked, Teardown
      */
     private $teardown;
     /**
-     * @var CallResults
+     * @var Results
      */
     private $hookCallResults;
 
@@ -34,9 +34,9 @@ final class HookedTeardown implements Hooked, Teardown
      * Initializes setup.
      *
      * @param Teardown    $teardown
-     * @param CallResults $hookCallResults
+     * @param Results $hookCallResults
      */
-    public function __construct(Teardown $teardown, CallResults $hookCallResults)
+    public function __construct(Teardown $teardown, Results $hookCallResults)
     {
         $this->teardown = $teardown;
         $this->hookCallResults = $hookCallResults;
@@ -65,7 +65,7 @@ final class HookedTeardown implements Hooked, Teardown
     /**
      * Returns hook call results.
      *
-     * @return CallResults
+     * @return Results
      */
     public function getHookCallResults()
     {

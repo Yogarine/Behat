@@ -12,11 +12,11 @@ namespace Behat\Behat\Output\Node\EventListener\Statistics;
 
 use Behat\Behat\Output\Statistics\HookStat;
 use Behat\Behat\Output\Statistics\Statistics;
-use Behat\Testwork\Call\CallResult;
+use Behat\Testwork\Call\Result;
 use Behat\Testwork\Event\Event;
 use Behat\Testwork\EventDispatcher\Event\AfterSetup;
 use Behat\Testwork\EventDispatcher\Event\AfterTested;
-use Behat\Testwork\Exception\ExceptionPresenter;
+use Behat\Testwork\Exception\ExceptionStringerPresenter;
 use Behat\Testwork\Hook\Tester\Setup\HookedSetup;
 use Behat\Testwork\Hook\Tester\Setup\HookedTeardown;
 use Behat\Testwork\Output\Formatter;
@@ -36,17 +36,17 @@ final class HookStatsListener implements EventListener
      */
     private $statistics;
     /**
-     * @var ExceptionPresenter
+     * @var ExceptionStringerPresenter
      */
     private $exceptionPresenter;
 
     /**
      * Initializes listener.
      *
-     * @param Statistics         $statistics
-     * @param ExceptionPresenter $exceptionPresenter
+     * @param Statistics                 $statistics
+     * @param ExceptionStringerPresenter $exceptionPresenter
      */
-    public function __construct(Statistics $statistics, ExceptionPresenter $exceptionPresenter)
+    public function __construct(Statistics $statistics, ExceptionStringerPresenter $exceptionPresenter)
     {
         $this->statistics = $statistics;
         $this->exceptionPresenter = $exceptionPresenter;
@@ -107,9 +107,9 @@ final class HookStatsListener implements EventListener
     /**
      * Captures hook call result.
      *
-     * @param CallResult $hookCallResult
+     * @param Result $hookCallResult
      */
-    private function captureHookStat(CallResult $hookCallResult)
+    private function captureHookStat(Result $hookCallResult)
     {
         $callee = $hookCallResult->getCall()->getCallee();
         $hook = (string) $callee;

@@ -10,13 +10,13 @@
 
 namespace Behat\Testwork\Call\Filter;
 
-use Behat\Testwork\Call\CallCenter;
-use Behat\Testwork\Call\CallResult;
+use Behat\Testwork\Call\Caller;
+use Behat\Testwork\Call\Result;
 
 /**
  * Filters call results and produces new ones.
  *
- * @see CallCenter
+ * @see Caller
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */
@@ -25,18 +25,18 @@ interface ResultFilter
     /**
      * Checks if filter supports call result.
      *
-     * @param CallResult $result
+     * @param Result $result
      *
      * @return bool
      */
-    public function supportsResult(CallResult $result);
+    public function supportsResult(Result $result);
 
     /**
      * Filters call result and returns a new result.
      *
-     * @param CallResult $result
+     * @param Result $result
      *
-     * @return CallResult
+     * @return Result
      */
-    public function filterResult(CallResult $result);
+    public function filterResult(Result $result);
 }

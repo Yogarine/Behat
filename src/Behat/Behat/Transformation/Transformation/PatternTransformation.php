@@ -14,7 +14,7 @@ use Behat\Behat\Definition\Call\FeatureStepCall;
 use Behat\Behat\Transformation\Call\TransformationCall;
 use Behat\Behat\Transformation\RegexGenerator;
 use Behat\Behat\Transformation\Transformation;
-use Behat\Testwork\Call\CallCenter;
+use Behat\Testwork\Call\Caller;
 use Behat\Testwork\Call\RuntimeCallee;
 use Exception;
 
@@ -70,10 +70,10 @@ final class PatternTransformation extends RuntimeCallee implements Transformatio
     /**
      * Transforms argument value using transformation and returns a new one.
      *
-     * @param RegexGenerator $regexGenerator
-     * @param CallCenter     $callCenter
+     * @param RegexGenerator  $regexGenerator
+     * @param Caller          $callCenter
      * @param FeatureStepCall $definitionCall
-     * @param mixed          $argumentValue
+     * @param mixed           $argumentValue
      *
      * @return mixed
      *
@@ -81,7 +81,7 @@ final class PatternTransformation extends RuntimeCallee implements Transformatio
      */
     public function transformArgument(
         RegexGenerator $regexGenerator,
-        CallCenter $callCenter,
+        Caller $callCenter,
         FeatureStepCall $definitionCall,
         $argumentValue
     ) {

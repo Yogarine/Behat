@@ -10,6 +10,10 @@
 
 namespace Behat\Behat\Snippet;
 
+use Behat\Behat\Snippet\Generator\SnippetGenerator;
+use Behat\Gherkin\Node\StepNode;
+use Behat\Testwork\Environment\Environment;
+
 /**
  * Provides snippets.
  *
@@ -17,6 +21,23 @@ namespace Behat\Behat\Snippet;
  */
 interface SnippetRepository
 {
+    /**
+     * Registers snippet generator.
+     *
+     * @param SnippetGenerator $generator
+     */
+    public function registerSnippetGenerator(SnippetGenerator $generator);
+
+    /**
+     * Generates and registers snippet.
+     *
+     * @param Environment $environment
+     * @param StepNode    $step
+     *
+     * @return null|Snippet
+     */
+    public function registerUndefinedStep(Environment $environment, StepNode $step);
+
     /**
      * Returns all generated snippets.
      *

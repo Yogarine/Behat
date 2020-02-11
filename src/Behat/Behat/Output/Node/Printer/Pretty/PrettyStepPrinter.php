@@ -21,7 +21,7 @@ use Behat\Gherkin\Node\ArgumentInterface;
 use Behat\Gherkin\Node\PyStringNode;
 use Behat\Gherkin\Node\ScenarioLikeInterface as Scenario;
 use Behat\Gherkin\Node\StepNode;
-use Behat\Testwork\Exception\ExceptionPresenter;
+use Behat\Testwork\Exception\ExceptionStringerPresenter;
 use Behat\Testwork\Output\Formatter;
 use Behat\Testwork\Output\Printer\OutputPrinter;
 use Behat\Testwork\Tester\Result\ExceptionResult;
@@ -46,7 +46,7 @@ final class PrettyStepPrinter implements StepPrinter
      */
     private $pathPrinter;
     /**
-     * @var ExceptionPresenter
+     * @var ExceptionStringerPresenter
      */
     private $exceptionPresenter;
     /**
@@ -61,18 +61,18 @@ final class PrettyStepPrinter implements StepPrinter
     /**
      * Initializes printer.
      *
-     * @param TextPainter             $textPainter
-     * @param ResultConverter $resultConverter
-     * @param PathPrinter       $pathPrinter
-     * @param ExceptionPresenter      $exceptionPresenter
-     * @param integer                 $indentation
-     * @param integer                 $subIndentation
+     * @param TextPainter                $textPainter
+     * @param ResultConverter            $resultConverter
+     * @param PathPrinter                $pathPrinter
+     * @param ExceptionStringerPresenter $exceptionPresenter
+     * @param integer                    $indentation
+     * @param integer                    $subIndentation
      */
     public function __construct(
         TextPainter $textPainter,
         ResultConverter $resultConverter,
         PathPrinter $pathPrinter,
-        ExceptionPresenter $exceptionPresenter,
+        ExceptionStringerPresenter $exceptionPresenter,
         $indentation = 4,
         $subIndentation = 2
     ) {

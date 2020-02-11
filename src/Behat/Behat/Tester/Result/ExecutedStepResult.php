@@ -12,7 +12,7 @@ namespace Behat\Behat\Tester\Result;
 
 use Behat\Behat\Definition\DefinitionMatch;
 use Behat\Behat\Tester\Exception\PendingException;
-use Behat\Testwork\Call\CallResult;
+use Behat\Testwork\Call\Result;
 use Behat\Testwork\Tester\Result\ExceptionResult;
 
 /**
@@ -27,7 +27,7 @@ final class ExecutedStepResult implements StepResult, DefinedStepResult, Excepti
      */
     private $searchResult;
     /**
-     * @var null|CallResult
+     * @var null|Result
      */
     private $callResult;
 
@@ -35,9 +35,9 @@ final class ExecutedStepResult implements StepResult, DefinedStepResult, Excepti
      * Initialize test result.
      *
      * @param DefinitionMatch $searchResult
-     * @param CallResult   $callResult
+     * @param Result   $callResult
      */
-    public function __construct(DefinitionMatch $searchResult, CallResult $callResult)
+    public function __construct(DefinitionMatch $searchResult, Result $callResult)
     {
         $this->searchResult = $searchResult;
         $this->callResult = $callResult;
@@ -56,7 +56,7 @@ final class ExecutedStepResult implements StepResult, DefinedStepResult, Excepti
     /**
      * Returns definition call result or null if no call were made.
      *
-     * @return CallResult
+     * @return Result
      */
     public function getCallResult()
     {

@@ -17,7 +17,7 @@ use Exception;
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */
-final class CallResult
+final class CallResult implements Result
 {
     /**
      * @var Call

@@ -11,7 +11,7 @@
 namespace Behat\Testwork\Exception\Cli;
 
 use Behat\Testwork\Cli\Controller;
-use Behat\Testwork\Exception\ExceptionPresenter;
+use Behat\Testwork\Exception\ExceptionStringerPresenter;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -24,16 +24,16 @@ use Symfony\Component\Console\Output\OutputInterface;
 final class VerbosityController implements Controller
 {
     /**
-     * @var ExceptionPresenter
+     * @var ExceptionStringerPresenter
      */
     private $exceptionPresenter;
 
     /**
      * Initializes controller.
      *
-     * @param ExceptionPresenter $exceptionPresenter
+     * @param ExceptionStringerPresenter $exceptionPresenter
      */
-    public function __construct(ExceptionPresenter $exceptionPresenter)
+    public function __construct(ExceptionStringerPresenter $exceptionPresenter)
     {
         $this->exceptionPresenter = $exceptionPresenter;
     }

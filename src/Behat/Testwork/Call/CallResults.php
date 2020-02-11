@@ -11,26 +11,24 @@
 namespace Behat\Testwork\Call;
 
 use ArrayIterator;
-use Countable;
 use Iterator;
-use IteratorAggregate;
 
 /**
  * Aggregates multiple call results into a collection and provides an informational API on top of that.
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */
-final class CallResults implements Countable, IteratorAggregate
+final class CallResults implements Results
 {
     /**
-     * @var CallResult[]
+     * @var Result[]
      */
     private $results;
 
     /**
      * Initializes call results collection.
      *
-     * @param CallResult[] $results
+     * @param Result[] $results
      */
     public function __construct(array $results = array())
     {
@@ -40,12 +38,12 @@ final class CallResults implements Countable, IteratorAggregate
     /**
      * Merges results from provided collection into the current one.
      *
-     * @param CallResults $first
-     * @param CallResults $second
+     * @param Results $first
+     * @param Results $second
      *
-     * @return CallResults
+     * @return Results
      */
-    public static function merge(CallResults $first, CallResults $second)
+    public static function merge(Results $first, Results $second)
     {
         return new static(array_merge($first->toArray(), $second->toArray()));
     }
@@ -105,7 +103,7 @@ final class CallResults implements Countable, IteratorAggregate
     /**
      * Returns call results array.
      *
-     * @return CallResult[]
+     * @return Result[]
      */
     public function toArray()
     {

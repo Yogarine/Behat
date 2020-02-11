@@ -17,9 +17,9 @@ use Behat\Behat\Transformation\SimpleArgumentTransformation;
 use Behat\Behat\Transformation\Transformation\PatternTransformation;
 use Behat\Behat\Transformation\RegexGenerator;
 use Behat\Behat\Transformation\Transformation;
-use Behat\Behat\Transformation\TransformationRepository;
+use Behat\Behat\Transformation\EnvironmentTransformationRepository;
 use Behat\Gherkin\Node\ArgumentInterface;
-use Behat\Testwork\Call\CallCenter;
+use Behat\Testwork\Call\Caller;
 
 /**
  * Argument transformer based on transformations repository.
@@ -29,11 +29,11 @@ use Behat\Testwork\Call\CallCenter;
 final class RepositoryArgumentTransformer implements ArgumentTransformer, RegexGenerator
 {
     /**
-     * @var TransformationRepository
+     * @var EnvironmentTransformationRepository
      */
     private $repository;
     /**
-     * @var CallCenter
+     * @var Caller
      */
     private $callCenter;
     /**
@@ -48,14 +48,14 @@ final class RepositoryArgumentTransformer implements ArgumentTransformer, RegexG
     /**
      * Initializes transformer.
      *
-     * @param TransformationRepository $repository
-     * @param CallCenter               $callCenter
-     * @param SimplePatternTransformer       $patternTransformer
+     * @param EnvironmentTransformationRepository $repository
+     * @param Caller                   $callCenter
+     * @param SimplePatternTransformer $patternTransformer
      * @param TranslatorInterface      $translator
      */
     public function __construct(
-        TransformationRepository $repository,
-        CallCenter $callCenter,
+        EnvironmentTransformationRepository $repository,
+        Caller $callCenter,
         SimplePatternTransformer $patternTransformer,
         TranslatorInterface $translator
     ) {

@@ -15,7 +15,7 @@ namespace Behat\Behat\Output\Statistics;
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */
-class HookStat
+final class HookStat implements CallStat
 {
     /**
      * @var string

@@ -53,9 +53,9 @@ interface Statistics
     /**
      * Registers scenario stat.
      *
-     * @param ScenarioStat $stat
+     * @param ResultStat $stat
      */
-    public function registerScenarioStat(ScenarioStat $stat);
+    public function registerScenarioStat(ResultStat $stat);
 
     /**
      * Registers step stat.
@@ -67,9 +67,9 @@ interface Statistics
     /**
      * Registers hook stat.
      *
-     * @param HookStat $stat
+     * @param CallStat $stat
      */
-    public function registerHookStat(HookStat $stat);
+    public function registerHookStat(CallStat $stat);
 
     /**
      * Returns counters for different scenario result codes.
@@ -81,14 +81,14 @@ interface Statistics
     /**
      * Returns skipped scenario stats.
      *
-     * @return ScenarioStat[]
+     * @return ResultStat[]
      */
     public function getSkippedScenarios();
 
     /**
      * Returns failed scenario stats.
      *
-     * @return ScenarioStat[]
+     * @return ResultStat[]
      */
     public function getFailedScenarios();
 
@@ -116,7 +116,7 @@ interface Statistics
     /**
      * Returns failed hook stats.
      *
-     * @return HookStat[]
+     * @return CallStat[]
      */
     public function getFailedHookStats();
 }

@@ -12,8 +12,8 @@ namespace Behat\Behat\Snippet\Cli;
 
 use Behat\Behat\EventDispatcher\Event\AfterStepTested;
 use Behat\Behat\EventDispatcher\Event\StepTested;
-use Behat\Behat\Snippet\Printer\ConsoleSnippetPrinter;
-use Behat\Behat\Snippet\SnippetRegistry;
+use Behat\Behat\Snippet\Printer\SnippetPrinter;
+use Behat\Behat\Snippet\SnippetRepository;
 use Behat\Behat\Snippet\SnippetWriter;
 use Behat\Behat\Tester\Result\StepResult;
 use Behat\Testwork\Cli\Controller;
@@ -32,7 +32,7 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 final class SnippetsController implements Controller
 {
     /**
-     * @var SnippetRegistry
+     * @var SnippetRepository
      */
     private $registry;
     /**
@@ -40,7 +40,7 @@ final class SnippetsController implements Controller
      */
     private $writer;
     /**
-     * @var ConsoleSnippetPrinter
+     * @var SnippetPrinter
      */
     private $printer;
     /**
@@ -55,15 +55,15 @@ final class SnippetsController implements Controller
     /**
      * Initializes controller.
      *
-     * @param SnippetRegistry          $registry
+     * @param SnippetRepository          $registry
      * @param SnippetWriter            $writer
-     * @param ConsoleSnippetPrinter    $printer
+     * @param SnippetPrinter    $printer
      * @param EventDispatcherInterface $eventDispatcher
      */
     public function __construct(
-        SnippetRegistry $registry,
+        SnippetRepository $registry,
         SnippetWriter $writer,
-        ConsoleSnippetPrinter $printer,
+        SnippetPrinter $printer,
         EventDispatcherInterface $eventDispatcher
     ) {
         $this->registry = $registry;

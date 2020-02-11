@@ -10,7 +10,7 @@
 
 namespace Behat\Testwork\Hook\Tester\Setup;
 
-use Behat\Testwork\Call\CallResults;
+use Behat\Testwork\Call\Results;
 use Behat\Testwork\Hook\Hooked;
 use Behat\Testwork\Tester\Setup\Setup;
 
@@ -26,7 +26,7 @@ final class HookedSetup implements Hooked, Setup
      */
     private $setup;
     /**
-     * @var CallResults
+     * @var Results
      */
     private $hookCallResults;
 
@@ -34,9 +34,9 @@ final class HookedSetup implements Hooked, Setup
      * Initializes setup.
      *
      * @param Setup       $setup
-     * @param CallResults $hookCallResults
+     * @param Results $hookCallResults
      */
-    public function __construct(Setup $setup, CallResults $hookCallResults)
+    public function __construct(Setup $setup, Results $hookCallResults)
     {
         $this->setup = $setup;
         $this->hookCallResults = $hookCallResults;
@@ -65,7 +65,7 @@ final class HookedSetup implements Hooked, Setup
     /**
      * Returns hook call results.
      *
-     * @return CallResults
+     * @return Results
      */
     public function getHookCallResults()
     {

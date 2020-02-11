@@ -12,11 +12,11 @@ namespace Behat\Behat\Output\Node\Printer;
 
 use Behat\Behat\Definition\Translator\TranslatorInterface;
 use Behat\Behat\Output\Node\Printer\Helper\ResultConverter;
-use Behat\Behat\Output\Statistics\HookStat;
-use Behat\Behat\Output\Statistics\ScenarioStat;
-use Behat\Behat\Output\Statistics\StepStatV2;
+use Behat\Behat\Output\Statistics\CallStat;
+use Behat\Behat\Output\Statistics\ResultStat;
+use Behat\Behat\Output\Statistics\ScenarioStepStat;
 use Behat\Behat\Output\Statistics\StepStat;
-use Behat\Testwork\Exception\ExceptionPresenter;
+use Behat\Testwork\Exception\ExceptionStringerPresenter;
 use Behat\Testwork\Output\Printer\OutputPrinter;
 use Behat\Testwork\Tester\Result\TestResult;
 
@@ -32,7 +32,7 @@ class ListPrinter
      */
     private $resultConverter;
     /**
-     * @var ExceptionPresenter
+     * @var ExceptionStringerPresenter
      */
     private $exceptionPresenter;
     /**
@@ -47,14 +47,14 @@ class ListPrinter
     /**
      * Initializes printer.
      *
-     * @param ResultConverter $resultConverter
-     * @param ExceptionPresenter      $exceptionPresenter
-     * @param TranslatorInterface     $translator
-     * @param string                  $basePath
+     * @param ResultConverter            $resultConverter
+     * @param ExceptionStringerPresenter $exceptionPresenter
+     * @param TranslatorInterface        $translator
+     * @param string                     $basePath
      */
     public function __construct(
         ResultConverter $resultConverter,
-        ExceptionPresenter $exceptionPresenter,
+        ExceptionStringerPresenter $exceptionPresenter,
         TranslatorInterface $translator,
         $basePath
     ) {
@@ -70,7 +70,7 @@ class ListPrinter
      * @param OutputPrinter  $printer
      * @param string         $intro
      * @param integer        $resultCode
-     * @param ScenarioStat[] $scenarioStats
+     * @param ResultStat[] $scenarioStats
      */
     public function printScenariosList(OutputPrinter $printer, $intro, $resultCode, array $scenarioStats)
     {
@@ -110,7 +110,7 @@ class ListPrinter
         $printer->writeln(sprintf('--- {+%s}%s{-%s}' . PHP_EOL, $style, $intro, $style));
 
         foreach ($stepStats as $num => $stepStat) {
-            if ($stepStat instanceof StepStatV2) {
+            if ($stepStat instanceof ScenarioStepStat) {
                 $this->printStepStat($printer, $num + 1, $stepStat, $style);
             } elseif ($stepStat instanceof StepStat) {
                 $this->printStat($printer, $stepStat->getText(), $stepStat->getPath(), $style, $stepStat->getStdOut(), $stepStat->getError());
@@ -123,7 +123,7 @@ class ListPrinter
      *
      * @param OutputPrinter $printer
      * @param string        $intro
-     * @param HookStat[]    $failedHookStats
+     * @param CallStat[]    $failedHookStats
      */
     public function printFailedHooksList(OutputPrinter $printer, $intro, array $failedHookStats)
     {
@@ -177,10 +177,10 @@ class ListPrinter
      * Prints hook stat.
      *
      * @param OutputPrinter $printer
-     * @param HookStat      $hookStat
+     * @param CallStat      $hookStat
      * @param string        $style
      */
-    private function printHookStat(OutputPrinter $printer, HookStat $hookStat, $style)
+    private function printHookStat(OutputPrinter $printer, CallStat $hookStat, $style)
     {
         $printer->writeln(
             sprintf('    {+%s}%s{-%s} {+comment}# %s{-comment}',
@@ -209,10 +209,10 @@ class ListPrinter
      *
      * @param OutputPrinter $printer
      * @param integer       $number
-     * @param StepStatV2    $stat
+     * @param ScenarioStepStat    $stat
      * @param string        $style
      */
-    private function printStepStat(OutputPrinter $printer, $number, StepStatV2 $stat, $style)
+    private function printStepStat(OutputPrinter $printer, $number, ScenarioStepStat $stat, $style)
     {
         $maxLength = max(mb_strlen($stat->getScenarioText(), 'utf8'), mb_strlen($stat->getStepText(), 'utf8') + 2) + 1;
 

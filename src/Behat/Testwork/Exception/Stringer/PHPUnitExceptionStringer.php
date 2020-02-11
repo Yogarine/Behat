@@ -15,7 +15,7 @@ use Exception;
 /**
  * Strings PHPUnit assertion exceptions.
  *
- * @see ExceptionPresenter
+ * @see ExceptionStringerPresenter
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */

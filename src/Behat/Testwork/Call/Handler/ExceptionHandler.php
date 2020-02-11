@@ -13,7 +13,7 @@ namespace Behat\Testwork\Call\Handler;
 /**
  * Handles exceptions.
  *
- * @see CallCenter
+ * @see Caller
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */

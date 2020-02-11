@@ -10,21 +10,22 @@
 
 namespace Behat\Behat\Output\Node\EventListener\Statistics;
 
-use Behat\Behat\EventDispatcher\Event\AfterStepTested;
-use Behat\Behat\EventDispatcher\Event\BeforeFeatureTested;
 use Behat\Behat\EventDispatcher\Event\BeforeScenarioTested;
 use Behat\Behat\EventDispatcher\Event\FeatureTested;
 use Behat\Behat\EventDispatcher\Event\ScenarioTested;
+use Behat\Behat\EventDispatcher\Event\StepTested;
 use Behat\Behat\Output\Statistics\StepStatV2;
 use Behat\Behat\Output\Statistics\Statistics;
 use Behat\Behat\Tester\Exception\PendingException;
+use Behat\Behat\Tester\Result\DefinedStepResult;
 use Behat\Behat\Tester\Result\ExecutedStepResult;
-use Behat\Behat\Tester\Result\StepResult;
 use Behat\Testwork\Event\Event;
-use Behat\Testwork\Exception\ExceptionPresenter;
+use Behat\Testwork\EventDispatcher\Event\AfterTested;
+use Behat\Testwork\Exception\ExceptionStringerPresenter;
 use Behat\Testwork\Output\Formatter;
 use Behat\Testwork\Output\Node\EventListener\EventListener;
 use Behat\Testwork\Tester\Result\ExceptionResult;
+use Behat\Testwork\Tester\Result\TestResult;
 use Exception;
 
 /**
@@ -43,7 +44,7 @@ final class StepStatsListener implements EventListener
      */
     private $currentFeaturePath;
     /**
-     * @var ExceptionPresenter
+     * @var ExceptionStringerPresenter
      */
     private $exceptionPresenter;
     /**
@@ -58,10 +59,10 @@ final class StepStatsListener implements EventListener
     /**
      * Initializes listener.
      *
-     * @param Statistics         $statistics
-     * @param ExceptionPresenter $exceptionPresenter
+     * @param Statistics                 $statistics
+     * @param ExceptionStringerPresenter $exceptionPresenter
      */
-    public function __construct(Statistics $statistics, ExceptionPresenter $exceptionPresenter)
+    public function __construct(Statistics $statistics, ExceptionStringerPresenter $exceptionPresenter)
     {
         $this->statistics = $statistics;
         $this->exceptionPresenter = $exceptionPresenter;
@@ -86,7 +87,7 @@ final class StepStatsListener implements EventListener
      */
     private function captureCurrentFeaturePathOnBeforeFeatureEvent(Event $event)
     {
-        if (!$event instanceof BeforeFeatureTested) {
+        if (!$event instanceof FeatureTested) {
             return;
         }
 
@@ -138,7 +139,7 @@ final class StepStatsListener implements EventListener
      */
     private function captureStepStatsOnAfterEvent(Event $event)
     {
-        if (!$event instanceof AfterStepTested) {
+        if (!$event instanceof AfterTested || !$event instanceof StepTested) {
             return;
         }
 
@@ -160,11 +161,11 @@ final class StepStatsListener implements EventListener
     /**
      * Gets exception from the step test results.
      *
-     * @param StepResult $result
+     * @param TestResult $result
      *
      * @return null|Exception
      */
-    private function getStepException(StepResult $result)
+    private function getStepException(TestResult $result)
     {
         if ($result instanceof ExceptionResult) {
             return $result->getException();
@@ -176,17 +177,21 @@ final class StepStatsListener implements EventListener
     /**
      * Gets step path from the AFTER test event and exception.
      *
-     * @param AfterStepTested $event
-     * @param null|Exception  $exception
+     * @param StepTested $event
+     * @param null|Exception         $exception
      *
      * @return string
      */
-    private function getStepPath(AfterStepTested $event, Exception $exception = null)
+    private function getStepPath(StepTested $event, Exception $exception = null)
     {
         $path = sprintf('%s:%d', $this->currentFeaturePath, $event->getStep()->getLine());
 
-        if ($exception && $exception instanceof PendingException) {
-            $path = $event->getTestResult()->getStepDefinition()->getPath();
+        if ($exception && $exception instanceof PendingException && $event instanceof AfterTested) {
+            $testResult = $event->getTestResult();
+
+            if ($testResult instanceof DefinedStepResult) {
+                $path = $testResult->getStepDefinition()->getPath();
+            }
         }
 
         return $path;

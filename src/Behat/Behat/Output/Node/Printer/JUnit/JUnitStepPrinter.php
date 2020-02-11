@@ -14,7 +14,7 @@ use Behat\Behat\Tester\Result\StepResult;
 use Behat\Behat\Output\Node\Printer\StepPrinter;
 use Behat\Gherkin\Node\ScenarioLikeInterface as Scenario;
 use Behat\Gherkin\Node\StepNode;
-use Behat\Testwork\Exception\ExceptionPresenter;
+use Behat\Testwork\Exception\ExceptionStringerPresenter;
 use Behat\Testwork\Output\Formatter;
 use Behat\Testwork\Output\Printer\JUnitOutputPrinter;
 use Behat\Testwork\Tester\Result\TestResult;
@@ -29,11 +29,11 @@ use Behat\Testwork\Tester\Result\ExceptionResult;
 class JUnitStepPrinter implements StepPrinter
 {
     /**
-     * @var ExceptionPresenter
+     * @var ExceptionStringerPresenter
      */
     private $exceptionPresenter;
 
-    public function __construct(ExceptionPresenter $exceptionPresenter)
+    public function __construct(ExceptionStringerPresenter $exceptionPresenter)
     {
         $this->exceptionPresenter = $exceptionPresenter;
     }

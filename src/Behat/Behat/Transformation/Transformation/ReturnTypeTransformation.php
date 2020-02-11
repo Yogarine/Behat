@@ -13,7 +13,7 @@ namespace Behat\Behat\Transformation\Transformation;
 use Behat\Behat\Definition\Call\FeatureStepCall;
 use Behat\Behat\Transformation\Call\TransformationCall;
 use Behat\Behat\Transformation\SimpleArgumentTransformation;
-use Behat\Testwork\Call\CallCenter;
+use Behat\Testwork\Call\Caller;
 use Behat\Testwork\Call\RuntimeCallee;
 use Closure;
 use ReflectionFunctionAbstract;
@@ -74,7 +74,7 @@ final class ReturnTypeTransformation extends RuntimeCallee implements SimpleArgu
     /**
      * {@inheritdoc}
      */
-    public function transformArgument(CallCenter $callCenter, FeatureStepCall $definitionCall, $argumentIndex, $argumentValue)
+    public function transformArgument(Caller $callCenter, FeatureStepCall $definitionCall, $argumentIndex, $argumentValue)
     {
         $call = new TransformationCall(
             $definitionCall->getEnvironment(),

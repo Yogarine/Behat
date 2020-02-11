@@ -22,7 +22,7 @@ use Behat\Behat\Tester\Result\UndefinedStepResult;
 use Behat\Behat\Tester\StepTester;
 use Behat\Gherkin\Node\FeatureNode;
 use Behat\Gherkin\Node\StepNode;
-use Behat\Testwork\Call\CallCenter;
+use Behat\Testwork\Call\Caller;
 use Behat\Testwork\Environment\Environment;
 use Behat\Testwork\Tester\Setup\SuccessfulSetup;
 use Behat\Testwork\Tester\Setup\SuccessfulTeardown;
@@ -39,7 +39,7 @@ final class RuntimeStepTester implements StepTester
      */
     private $definitionFinder;
     /**
-     * @var CallCenter
+     * @var Caller
      */
     private $callCenter;
 
@@ -47,9 +47,9 @@ final class RuntimeStepTester implements StepTester
      * Initialize tester.
      *
      * @param StepDefinitionFinder $definitionFinder
-     * @param CallCenter       $callCenter
+     * @param Caller               $callCenter
      */
-    public function __construct(StepDefinitionFinder $definitionFinder, CallCenter $callCenter)
+    public function __construct(StepDefinitionFinder $definitionFinder, Caller $callCenter)
     {
         $this->definitionFinder = $definitionFinder;
         $this->callCenter = $callCenter;

@@ -11,13 +11,13 @@
 namespace Behat\Testwork\Call\Handler;
 
 use Behat\Testwork\Call\Call;
-use Behat\Testwork\Call\CallCenter;
-use Behat\Testwork\Call\CallResult;
+use Behat\Testwork\Call\Caller;
+use Behat\Testwork\Call\Result;
 
 /**
  * Handles calls and produces call results.
  *
- * @see CallCenter
+ * @see Caller
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */
@@ -37,7 +37,7 @@ interface CallHandler
      *
      * @param Call $call
      *
-     * @return CallResult
+     * @return Result
      */
     public function handleCall(Call $call);
 }

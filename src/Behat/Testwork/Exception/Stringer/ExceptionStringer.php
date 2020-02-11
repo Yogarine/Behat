@@ -10,13 +10,13 @@
 
 namespace Behat\Testwork\Exception\Stringer;
 
-use Behat\Testwork\Exception\ExceptionPresenter;
+use Behat\Testwork\Exception\ExceptionStringerPresenter;
 use Exception;
 
 /**
  * Finds a best way to present as a string particular.
  *
- * @see ExceptionPresenter
+ * @see ExceptionStringerPresenter
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */

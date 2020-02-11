@@ -80,9 +80,9 @@ final class PhaseStatistics implements Statistics
     /**
      * Registers scenario stat.
      *
-     * @param ScenarioStat $stat
+     * @param ResultStat $stat
      */
-    public function registerScenarioStat(ScenarioStat $stat)
+    public function registerScenarioStat(ResultStat $stat)
     {
         $this->statistics->registerScenarioStat($stat);
     }
@@ -100,9 +100,9 @@ final class PhaseStatistics implements Statistics
     /**
      * Registers hook stat.
      *
-     * @param HookStat $stat
+     * @param CallStat $stat
      */
-    public function registerHookStat(HookStat $stat)
+    public function registerHookStat(CallStat $stat)
     {
         $this->statistics->registerHookStat($stat);
     }
@@ -120,7 +120,7 @@ final class PhaseStatistics implements Statistics
     /**
      * Returns skipped scenario stats.
      *
-     * @return ScenarioStat[]
+     * @return ResultStat[]
      */
     public function getSkippedScenarios()
     {
@@ -130,7 +130,7 @@ final class PhaseStatistics implements Statistics
     /**
      * Returns failed scenario stats.
      *
-     * @return ScenarioStat[]
+     * @return ResultStat[]
      */
     public function getFailedScenarios()
     {
@@ -170,7 +170,7 @@ final class PhaseStatistics implements Statistics
     /**
      * Returns failed hook stats.
      *
-     * @return HookStat[]
+     * @return CallStat[]
      */
     public function getFailedHookStats()
     {

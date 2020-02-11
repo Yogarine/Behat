@@ -19,7 +19,7 @@ use Behat\Testwork\Environment\EnvironmentRegistry;
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */
-final class TransformationRepository
+final class TransformationRepository implements EnvironmentTransformationRepository
 {
     /**
      * @var EnvironmentRegistry

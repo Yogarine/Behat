@@ -14,7 +14,7 @@ use Behat\Behat\Definition\Call\FeatureStepCall;
 use Behat\Behat\Transformation\Call\TransformationCall;
 use Behat\Behat\Transformation\SimpleArgumentTransformation;
 use Behat\Gherkin\Node\TableNode;
-use Behat\Testwork\Call\CallCenter;
+use Behat\Testwork\Call\Caller;
 use Behat\Testwork\Call\RuntimeCallee;
 use ReflectionMethod;
 
@@ -69,7 +69,7 @@ final class TableRowTransformation extends RuntimeCallee implements SimpleArgume
     /**
      * {@inheritdoc}
      */
-    public function transformArgument(CallCenter $callCenter, FeatureStepCall $definitionCall, $argumentIndex, $argumentValue)
+    public function transformArgument(Caller $callCenter, FeatureStepCall $definitionCall, $argumentIndex, $argumentValue)
     {
         $rows = array();
         foreach ($argumentValue as $row) {

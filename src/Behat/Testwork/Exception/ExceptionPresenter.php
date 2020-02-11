@@ -20,7 +20,7 @@ use Symfony\Component\Console\Output\OutputInterface;
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */
-final class ExceptionPresenter
+final class ExceptionPresenter implements ExceptionStringerPresenter
 {
     /**
      * @var string

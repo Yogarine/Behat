@@ -18,7 +18,7 @@ use Behat\Behat\Tester\Result\StepResult;
 use Behat\Gherkin\Node\ExampleNode;
 use Behat\Gherkin\Node\OutlineNode;
 use Behat\Testwork\EventDispatcher\Event\AfterTested;
-use Behat\Testwork\Exception\ExceptionPresenter;
+use Behat\Testwork\Exception\ExceptionStringerPresenter;
 use Behat\Testwork\Output\Formatter;
 use Behat\Testwork\Output\Printer\OutputPrinter;
 use Behat\Testwork\Tester\Result\ExceptionResult;
@@ -36,7 +36,7 @@ final class PrettyExampleRowPrinter implements ExampleRowPrinter
      */
     private $resultConverter;
     /**
-     * @var ExceptionPresenter
+     * @var ExceptionStringerPresenter
      */
     private $exceptionPresenter;
     /**
@@ -51,14 +51,14 @@ final class PrettyExampleRowPrinter implements ExampleRowPrinter
     /**
      * Initializes printer.
      *
-     * @param ResultConverter $resultConverter
-     * @param ExceptionPresenter      $exceptionPresenter
-     * @param integer                 $indentation
-     * @param integer                 $subIndentation
+     * @param ResultConverter            $resultConverter
+     * @param ExceptionStringerPresenter $exceptionPresenter
+     * @param integer                    $indentation
+     * @param integer                    $subIndentation
      */
     public function __construct(
         ResultConverter $resultConverter,
-        ExceptionPresenter $exceptionPresenter,
+        ExceptionStringerPresenter $exceptionPresenter,
         $indentation = 6,
         $subIndentation = 2
     ) {

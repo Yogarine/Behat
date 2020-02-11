@@ -8,21 +8,17 @@
  * file that was distributed with this source code.
  */
 
-namespace Behat\Testwork\Hook;
-
-use Behat\Testwork\Call\Results;
+namespace Behat\Behat\Output\Statistics;
 
 /**
- * Represents a hookable test teardown.
- *
  * @author Alwin Garside <alwin@garsi.de>
  */
-interface Hooked
+interface Stat
 {
     /**
-     * Returns hook call results.
+     * Returns hook path.
      *
-     * @return Results
+     * @return string
      */
-    public function getHookCallResults();
+    public function getPath();
 }

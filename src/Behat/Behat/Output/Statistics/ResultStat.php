@@ -8,21 +8,24 @@
  * file that was distributed with this source code.
  */
 
-namespace Behat\Testwork\Hook;
-
-use Behat\Testwork\Call\Results;
+namespace Behat\Behat\Output\Statistics;
 
 /**
- * Represents a hookable test teardown.
- *
  * @author Alwin Garside <alwin@garsi.de>
  */
-interface Hooked
+interface ResultStat extends Stat
 {
     /**
-     * Returns hook call results.
+     * Returns scenario title.
      *
-     * @return Results
+     * @return string
      */
-    public function getHookCallResults();
+    public function getTitle();
+
+    /**
+     * Returns scenario result code.
+     *
+     * @return integer
+     */
+    public function getResultCode();
 }

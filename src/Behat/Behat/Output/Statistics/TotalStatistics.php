@@ -40,11 +40,11 @@ final class TotalStatistics implements Statistics
      */
     private $stepCounters = array();
     /**
-     * @var ScenarioStat[]
+     * @var ResultStat[]
      */
     private $failedScenarioStats = array();
     /**
-     * @var ScenarioStat[]
+     * @var ResultStat[]
      */
     private $skippedScenarioStats = array();
     /**
@@ -56,7 +56,7 @@ final class TotalStatistics implements Statistics
      */
     private $pendingStepStats = array();
     /**
-     * @var HookStat[]
+     * @var CallStat[]
      */
     private $failedHookStats = array();
 
@@ -132,9 +132,9 @@ final class TotalStatistics implements Statistics
     /**
      * Registers scenario stat.
      *
-     * @param ScenarioStat $stat
+     * @param ResultStat $stat
      */
-    public function registerScenarioStat(ScenarioStat $stat)
+    public function registerScenarioStat(ResultStat $stat)
     {
         if (TestResults::NO_TESTS === $stat->getResultCode()) {
             return;
@@ -172,9 +172,9 @@ final class TotalStatistics implements Statistics
     /**
      * Registers hook stat.
      *
-     * @param HookStat $stat
+     * @param CallStat $stat
      */
-    public function registerHookStat(HookStat $stat)
+    public function registerHookStat(CallStat $stat)
     {
         if ($stat->isSuccessful()) {
             return;
@@ -196,7 +196,7 @@ final class TotalStatistics implements Statistics
     /**
      * Returns skipped scenario stats.
      *
-     * @return ScenarioStat[]
+     * @return ResultStat[]
      */
     public function getSkippedScenarios()
     {
@@ -206,7 +206,7 @@ final class TotalStatistics implements Statistics
     /**
      * Returns failed scenario stats.
      *
-     * @return ScenarioStat[]
+     * @return ResultStat[]
      */
     public function getFailedScenarios()
     {
@@ -246,7 +246,7 @@ final class TotalStatistics implements Statistics
     /**
      * Returns failed hook stats.
      *
-     * @return HookStat[]
+     * @return CallStat[]
      */
     public function getFailedHookStats()
     {

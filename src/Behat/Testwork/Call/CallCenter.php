@@ -24,7 +24,7 @@ use Throwable;
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */
-final class CallCenter
+final class CallCenter implements Caller
 {
     /**
      * @var CallFilter[]
@@ -88,7 +88,7 @@ final class CallCenter
      *
      * @param Call $call
      *
-     * @return CallResult
+     * @return Result
      */
     public function makeCall(Call $call)
     {
@@ -124,7 +124,7 @@ final class CallCenter
      *
      * @param Call $call
      *
-     * @return CallResult
+     * @return Result
      *
      * @throws CallHandlingException If call handlers didn't produce call result
      */
@@ -147,11 +147,11 @@ final class CallCenter
     /**
      * Filters call result using registered filters and returns a filtered one.
      *
-     * @param CallResult $result
+     * @param Result $result
      *
-     * @return CallResult
+     * @return Result
      */
-    private function filterResult(CallResult $result)
+    private function filterResult(Result $result)
     {
         foreach ($this->resultFilters as $filter) {
             if (!$filter->supportsResult($result)) {
@@ -169,7 +169,7 @@ final class CallCenter
      *
      * @param Throwable $exception
      *
-     * @return Throwable
+     * @return Exception
      */
     private function handleException($exception)
     {

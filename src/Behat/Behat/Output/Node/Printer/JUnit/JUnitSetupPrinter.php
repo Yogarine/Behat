@@ -3,9 +3,9 @@ namespace Behat\Behat\Output\Node\Printer\JUnit;
 
 use Behat\Behat\Hook\Scope\StepScope;
 use Behat\Behat\Output\Node\Printer\SetupPrinter;
-use Behat\Testwork\Call\CallResult;
-use Behat\Testwork\Call\CallResults;
-use Behat\Testwork\Exception\ExceptionPresenter;
+use Behat\Testwork\Call\Result;
+use Behat\Testwork\Call\Results;
+use Behat\Testwork\Exception\ExceptionStringerPresenter;
 use Behat\Testwork\Hook\Call\HookCall;
 use Behat\Testwork\Hook\Hooked;
 use Behat\Testwork\Output\Formatter;
@@ -18,11 +18,15 @@ use Behat\Testwork\Tester\Setup\Teardown;
  */
 class JUnitSetupPrinter implements SetupPrinter
 {
-
-    /** @var ExceptionPresenter */
+    /**
+     * @var ExceptionStringerPresenter
+     */
     private $exceptionPresenter;
 
-    public function __construct(ExceptionPresenter $exceptionPresenter)
+    /**
+     * @param ExceptionStringerPresenter $exceptionPresenter
+     */
+    public function __construct(ExceptionStringerPresenter $exceptionPresenter)
     {
         $this->exceptionPresenter = $exceptionPresenter;
     }
@@ -53,12 +57,12 @@ class JUnitSetupPrinter implements SetupPrinter
 
     /**
      * @param Formatter $formatter
-     * @param CallResults $results
+     * @param Results $results
      * @param string $messageType
      */
-    private function handleHookCalls(Formatter $formatter, CallResults $results, $messageType)
+    private function handleHookCalls(Formatter $formatter, Results $results, $messageType)
     {
-        /** @var CallResult $hookCallResult */
+        /** @var Result $hookCallResult */
         foreach ($results as $hookCallResult) {
             if ($hookCallResult->hasException()) {
                 /** @var HookCall $call */

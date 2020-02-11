@@ -91,7 +91,7 @@ final class AfterStepTested extends StepTested implements AfterTested, StepEvent
     /**
      * Returns current test result.
      *
-     * @return TestResult
+     * @return StepResult
      */
     public function getTestResult()
     {
