@@ -10,9 +10,9 @@
 
 namespace Behat\Behat\Output\Node\EventListener;
 
+use Behat\Testwork\Event\Event;
 use Behat\Testwork\Output\Formatter;
 use Behat\Testwork\Output\Node\EventListener\EventListener;
-use Behat\Testwork\Event\Event;
 
 /**
  * @author Alwin Garside <alwin@garsi.de>
