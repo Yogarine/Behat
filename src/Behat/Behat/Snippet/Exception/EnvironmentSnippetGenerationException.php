@@ -18,7 +18,7 @@ use RuntimeException;
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */
-final class EnvironmentSnippetGenerationException extends RuntimeException implements SnippetException
+final class EnvironmentSnippetGenerationException extends RuntimeException implements EnvironmentSnippetException
 {
     /**
      * @var Environment
