@@ -25,7 +25,7 @@ use Psr\Container\ContainerInterface;
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */
-final class InitializedContextEnvironment implements ContextEnvironment, ServiceContainerEnvironment
+final class InitializedContextEnvironment implements ContextInstanceEnvironment, ServiceContainerEnvironment
 {
     /**
      * @var string
