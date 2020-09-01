@@ -21,7 +21,7 @@ use ReflectionClass;
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */
-final class ContextFactory implements SimpleContextFactory
+final class ContextFactory implements ArgumentInitializingContextFactory
 {
     /**
      * @var ArgumentOrganiser
