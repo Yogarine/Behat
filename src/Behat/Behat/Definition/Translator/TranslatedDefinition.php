@@ -17,7 +17,7 @@ use Behat\Behat\Definition\Definition;
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */
-final class TranslatedDefinition implements Definition
+final class TranslatedDefinition implements TranslatedPatternDefinition
 {
     /**
      * @var Definition
