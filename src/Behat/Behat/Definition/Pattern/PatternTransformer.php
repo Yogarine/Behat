@@ -19,7 +19,7 @@ use Behat\Behat\Definition\Pattern\Policy\PatternPolicy;
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */
-final class PatternTransformer implements SimplePatternTransformer
+final class PatternTransformer implements PatternPolicyTransformer
 {
     /**
      * @var PatternPolicy[]
