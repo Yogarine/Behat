@@ -14,7 +14,6 @@ use Behat\Behat\Context\ContextClass\ClassGenerator;
 use Behat\Behat\Context\Exception\ContextNotFoundException;
 use Behat\Testwork\Filesystem\FilesystemLogger;
 use Behat\Testwork\Suite\Exception\SuiteConfigurationException;
-use Behat\Testwork\Suite\Setup\SuiteSetup;
 use Behat\Testwork\Suite\Suite;
 use Composer\Autoload\ClassLoader;
 
@@ -23,7 +22,7 @@ use Composer\Autoload\ClassLoader;
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */
-final class SuiteWithContextsSetup implements SuiteSetup
+final class SuiteWithContextsSetup implements ClassGeneratingSuiteSetup
 {
     /**
      * @var ClassLoader
