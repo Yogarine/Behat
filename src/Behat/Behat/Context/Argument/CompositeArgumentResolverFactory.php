@@ -19,7 +19,7 @@ use Behat\Testwork\Environment\Environment;
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */
-final class CompositeArgumentResolverFactory implements ArgumentResolverFactory
+final class CompositeArgumentResolverFactory implements ArgumentResolverFactoryRegistry, ArgumentResolverFactory
 {
     /**
      * @var ArgumentResolverFactory[]
@@ -27,9 +27,7 @@ final class CompositeArgumentResolverFactory implements ArgumentResolverFactory
     private $factories = array();
 
     /**
-     * Registers factory.
-     *
-     * @param ArgumentResolverFactory $factory
+     * {@inheritdoc}
      */
     public function registerFactory(ArgumentResolverFactory $factory)
     {
