@@ -20,7 +20,7 @@ use Behat\Testwork\Environment\Environment;
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */
-final class DefinitionFinder implements StepDefinitionFinder
+final class DefinitionFinder implements DefinitionSearcher
 {
     /**
      * @var SearchEngine[]
