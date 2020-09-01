@@ -10,15 +10,11 @@
 
 namespace Behat\Behat\EventDispatcher\Event;
 
+use Behat\Testwork\EventDispatcher\Event\AfterSetup;
+
 /**
  * @author Alwin Garside <alwin@garsi.de>
  */
-interface StepEventWithOutput extends StepEvent
+interface AfterStepSetupWithOutput extends StepEventWithOutput, AfterSetup
 {
-    /**
-     * Checks if step call, setup or teardown produced any output (stdOut or exception).
-     *
-     * @return bool
-     */
-    public function hasOutput();
 }

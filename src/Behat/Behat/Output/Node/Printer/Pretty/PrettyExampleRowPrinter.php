@@ -10,7 +10,7 @@
 
 namespace Behat\Behat\Output\Node\Printer\Pretty;
 
-use Behat\Behat\EventDispatcher\Event\AfterStepTested;
+use Behat\Behat\EventDispatcher\Event\AfterStepTestedWithOutput;
 use Behat\Behat\Output\Node\Printer\ExampleRowPrinter;
 use Behat\Behat\Output\Node\Printer\Helper\ResultConverter;
 use Behat\Behat\Tester\Result\ExecutedStepResult;
@@ -86,7 +86,7 @@ final class PrettyExampleRowPrinter implements ExampleRowPrinter
      *
      * @param OutlineNode   $outline
      * @param ExampleNode   $example
-     * @param AfterStepTested[] $stepEvents
+     * @param AfterStepTestedWithOutput[] $stepEvents
      *
      * @return callable
      */

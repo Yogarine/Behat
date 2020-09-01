@@ -10,12 +10,13 @@
 
 namespace Behat\Behat\Output\Node\EventListener\JUnit;
 
-use Behat\Behat\EventDispatcher\Event\AfterFeatureTested;
-use Behat\Behat\EventDispatcher\Event\EnvironmentAfterTested;
-use Behat\Behat\EventDispatcher\Event\AfterStepSetup;
-use Behat\Behat\EventDispatcher\Event\AfterStepTested;
+use Behat\Behat\EventDispatcher\Event\AfterFeatureTestedEvent;
+use Behat\Behat\EventDispatcher\Event\AfterScenarioLikeTested;
+use Behat\Behat\EventDispatcher\Event\AfterStepSetupWithOutput;
+use Behat\Behat\EventDispatcher\Event\AfterStepTestedWithOutput;
 use Behat\Behat\EventDispatcher\Event\BeforeFeatureTested;
 use Behat\Behat\EventDispatcher\Event\ScenarioTested;
+use Behat\Behat\EventDispatcher\Event\StepEvent;
 use Behat\Behat\EventDispatcher\Event\StepTested;
 use Behat\Behat\Output\Node\EventListener\FeatureElementListener;
 use Behat\Behat\Output\Node\Printer\FeaturePrinter;
@@ -24,7 +25,6 @@ use Behat\Behat\Output\Node\Printer\SetupPrinter;
 use Behat\Behat\Output\Node\Printer\StepPrinter;
 use Behat\Gherkin\Node\FeatureNode;
 use Behat\Testwork\Event\Event;
-use Behat\Testwork\EventDispatcher\Event\AfterSetup;
 use Behat\Testwork\Output\Formatter;
 
 /**
@@ -55,15 +55,15 @@ final class JUnitFeatureElementListener implements FeatureElementListener
      */
     private $beforeFeatureTestedEvent;
     /**
-     * @var EnvironmentAfterTested[]
+     * @var AfterScenarioLikeTested[]
      */
     private $afterScenarioTestedEvents = array();
     /**
-     * @var AfterStepTested[]
+     * @var AfterStepTestedWithOutput[]
      */
     private $afterStepTestedEvents = array();
     /**
-     * @var AfterSetup[]
+     * @var AfterStepSetupWithOutput[]
      */
     private $afterStepSetupEvents = array();
 
@@ -96,7 +96,7 @@ final class JUnitFeatureElementListener implements FeatureElementListener
         }
 
         if ($event instanceof StepTested
-            || $event instanceof AfterStepSetup
+            || $event instanceof AfterStepSetupWithOutput
         ) {
             $this->captureStepEvent($event);
         }
@@ -112,7 +112,7 @@ final class JUnitFeatureElementListener implements FeatureElementListener
      */
     private function captureScenarioEvent(ScenarioTested $event)
     {
-        if ($event instanceof EnvironmentAfterTested) {
+        if ($event instanceof AfterScenarioLikeTested) {
             $this->afterScenarioTestedEvents[$event->getScenario()->getLine()] = array(
                 'event'             => $event,
                 'step_events'       => $this->afterStepTestedEvents,
@@ -141,14 +141,14 @@ final class JUnitFeatureElementListener implements FeatureElementListener
     /**
      * Captures step tested event.
      *
-     * @param Event $event
+     * @param StepEvent $event
      */
-    private function captureStepEvent(Event $event)
+    private function captureStepEvent(StepEvent $event)
     {
-        if ($event instanceof AfterStepTested) {
+        if ($event instanceof AfterStepTestedWithOutput) {
             $this->afterStepTestedEvents[$event->getStep()->getLine()] = $event;
         }
-        if ($event instanceof AfterStepSetup) {
+        if ($event instanceof AfterStepSetupWithOutput) {
             $this->afterStepSetupEvents[$event->getStep()->getLine()] = $event;
         }
     }
@@ -161,7 +161,7 @@ final class JUnitFeatureElementListener implements FeatureElementListener
      */
     public function printFeatureOnAfterEvent(Formatter $formatter, Event $event)
     {
-        if (!$event instanceof AfterFeatureTested) {
+        if (!$event instanceof AfterFeatureTestedEvent) {
             return;
         }
 
@@ -171,7 +171,7 @@ final class JUnitFeatureElementListener implements FeatureElementListener
             $afterScenarioTested = $afterScenario['event'];
             $this->scenarioPrinter->printOpenTag($formatter, $afterScenarioTested->getFeature(), $afterScenarioTested->getScenario(), $afterScenarioTested->getTestResult());
 
-            /** @var AfterStepSetup $afterStepSetup */
+            /** @var AfterStepSetupWithOutput $afterStepSetup */
             foreach ($afterScenario['step_setup_events'] as $afterStepSetup) {
                 $this->setupPrinter->printSetup($formatter, $afterStepSetup->getSetup());
             }

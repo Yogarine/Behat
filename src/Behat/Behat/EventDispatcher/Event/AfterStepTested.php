@@ -15,9 +15,7 @@ use Behat\Behat\Tester\Result\StepResult;
 use Behat\Gherkin\Node\FeatureNode;
 use Behat\Gherkin\Node\StepNode;
 use Behat\Testwork\Environment\Environment;
-use Behat\Testwork\EventDispatcher\Event\AfterTested;
 use Behat\Testwork\Tester\Result\ExceptionResult;
-use Behat\Testwork\Tester\Result\TestResult;
 use Behat\Testwork\Tester\Setup\Teardown;
 
 /**
@@ -25,7 +23,7 @@ use Behat\Testwork\Tester\Setup\Teardown;
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */
-final class AfterStepTested extends StepTested implements AfterTested, StepEventWithOutput
+final class AfterStepTested extends StepTested implements AfterStepTestedWithOutput
 {
     /**
      * @var FeatureNode

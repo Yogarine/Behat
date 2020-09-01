@@ -19,7 +19,7 @@ use Behat\Testwork\EventDispatcher\Event\LifecycleEvent;
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */
-abstract class FeatureTested extends LifecycleEvent implements GherkinNodeTested
+abstract class FeatureTested extends LifecycleEvent implements FeatureEvent, GherkinNodeTested
 {
     public const BEFORE = 'tester.feature_tested.before';
     public const AFTER_SETUP = 'tester.feature_tested.after_setup';

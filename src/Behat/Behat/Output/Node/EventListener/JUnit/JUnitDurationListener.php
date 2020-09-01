@@ -1,8 +1,8 @@
 <?php
 namespace Behat\Behat\Output\Node\EventListener\JUnit;
 
-use Behat\Behat\EventDispatcher\Event\AfterFeatureTested;
-use Behat\Behat\EventDispatcher\Event\EnvironmentAfterTested;
+use Behat\Behat\EventDispatcher\Event\AfterFeatureTestedEvent;
+use Behat\Behat\EventDispatcher\Event\AfterScenarioLikeTested;
 use Behat\Behat\EventDispatcher\Event\BeforeFeatureTested;
 use Behat\Behat\EventDispatcher\Event\BeforeScenarioTested;
 use Behat\Behat\Output\Node\EventListener\FeatureDurationListener;
@@ -90,7 +90,7 @@ final class JUnitDurationListener implements FeatureDurationListener
      */
     private function captureAfterScenarioEvent(Event $event)
     {
-        if (!$event instanceof EnvironmentAfterTested) {
+        if (!$event instanceof AfterScenarioLikeTested) {
             return;
         }
 
@@ -107,7 +107,7 @@ final class JUnitDurationListener implements FeatureDurationListener
      */
     private function captureAfterFeatureEvent(Event $event)
     {
-        if (!$event instanceof AfterFeatureTested) {
+        if (!$event instanceof AfterFeatureTestedEvent) {
             return;
         }
 

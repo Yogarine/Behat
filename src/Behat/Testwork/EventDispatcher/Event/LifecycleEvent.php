@@ -19,7 +19,7 @@ use Behat\Testwork\Suite\Suite;
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */
-abstract class LifecycleEvent extends Event implements EnvironmentReference
+abstract class LifecycleEvent extends Event implements LifecycleReference
 {
     /**
      * @var Environment

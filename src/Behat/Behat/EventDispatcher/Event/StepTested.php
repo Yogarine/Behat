@@ -19,7 +19,7 @@ use Behat\Testwork\EventDispatcher\Event\LifecycleEvent;
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */
-abstract class StepTested extends LifecycleEvent implements GherkinNodeTested
+abstract class StepTested extends LifecycleEvent implements StepEvent, GherkinNodeTested
 {
     public const BEFORE = 'tester.step_tested.before';
     public const AFTER_SETUP = 'tester.step_tested.after_setup';

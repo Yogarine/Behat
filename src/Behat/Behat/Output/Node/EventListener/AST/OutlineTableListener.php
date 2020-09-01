@@ -11,14 +11,15 @@
 namespace Behat\Behat\Output\Node\EventListener\AST;
 
 use Behat\Behat\EventDispatcher\Event\AfterOutlineTested;
-use Behat\Behat\EventDispatcher\Event\AfterScenarioSetup;
-use Behat\Behat\EventDispatcher\Event\EnvironmentAfterTested;
-use Behat\Behat\EventDispatcher\Event\AfterStepSetup;
-use Behat\Behat\EventDispatcher\Event\AfterStepTested;
-use Behat\Behat\EventDispatcher\Event\BeforeOutlineTested;
+use Behat\Behat\EventDispatcher\Event\AfterScenarioLikeSetup;
+use Behat\Behat\EventDispatcher\Event\AfterScenarioLikeTested;
+use Behat\Behat\EventDispatcher\Event\AfterScenarioTested;
+use Behat\Behat\EventDispatcher\Event\AfterStepSetupWithOutput;
+use Behat\Behat\EventDispatcher\Event\AfterStepTestedWithOutput;
+use Behat\Behat\EventDispatcher\Event\BeforeOutlineEvent;
 use Behat\Behat\EventDispatcher\Event\ExampleTested;
 use Behat\Behat\EventDispatcher\Event\OutlineTested;
-use Behat\Behat\EventDispatcher\Event\StepTested;
+use Behat\Behat\EventDispatcher\Event\StepEvent;
 use Behat\Behat\Output\Node\Printer\ExampleRowPrinter;
 use Behat\Behat\Output\Node\Printer\OutlineTablePrinter;
 use Behat\Behat\Output\Node\Printer\SetupPrinter;
@@ -65,11 +66,11 @@ final class OutlineTableListener implements EventListener
      */
     private $headerPrinted = false;
     /**
-     * @var AfterStepSetup[]
+     * @var AfterStepSetupWithOutput[]
      */
     private $stepBeforeTestedEvents = array();
     /**
-     * @var AfterStepTested[]
+     * @var AfterStepTestedWithOutput[]
      */
     private $stepAfterTestedEvents = array();
 
@@ -98,7 +99,7 @@ final class OutlineTableListener implements EventListener
      */
     public function listenEvent(Formatter $formatter, Event $event, $eventName)
     {
-        if ($event instanceof StepTested) {
+        if ($event instanceof StepEvent) {
             $this->captureStepEvent($event);
 
             return;
@@ -116,11 +117,11 @@ final class OutlineTableListener implements EventListener
     /**
      * Captures step tested event.
      *
-     * @param StepTested $event
+     * @param StepEvent $event
      */
-    private function captureStepEvent(StepTested $event)
+    private function captureStepEvent(StepEvent $event)
     {
-        if ($event instanceof AfterStepSetup) {
+        if ($event instanceof AfterStepSetupWithOutput) {
             $this->stepBeforeTestedEvents[$event->getStep()->getLine()] = $event;
         } else {
             $this->stepAfterTestedEvents[$event->getStep()->getLine()] = $event;
@@ -134,7 +135,7 @@ final class OutlineTableListener implements EventListener
      */
     private function captureOutlineOnBeforeOutlineEvent(Event $event)
     {
-        if (!$event instanceof BeforeOutlineTested) {
+        if (!$event instanceof BeforeOutlineEvent) {
             return;
         }
 
@@ -149,7 +150,7 @@ final class OutlineTableListener implements EventListener
      */
     private function captureExampleSetupOnBeforeEvent(Event $event)
     {
-        if (!$event instanceof AfterScenarioSetup) {
+        if (!$event instanceof AfterScenarioLikeSetup) {
             return;
         }
 
@@ -179,7 +180,7 @@ final class OutlineTableListener implements EventListener
      */
     private function printHeaderOnAfterExampleEvent(Formatter $formatter, Event $event, $eventName)
     {
-        if (!$event instanceof EnvironmentAfterTested || ExampleTested::AFTER !== $eventName) {
+        if (!$event instanceof AfterScenarioLikeTested || ExampleTested::AFTER !== $eventName) {
             return;
         }
 
@@ -203,7 +204,7 @@ final class OutlineTableListener implements EventListener
      */
     private function printExampleRowOnAfterExampleEvent(Formatter $formatter, Event $event, $eventName)
     {
-        if (!$event instanceof EnvironmentAfterTested || ExampleTested::AFTER !== $eventName) {
+        if (!$event instanceof AfterScenarioLikeTested || ExampleTested::AFTER !== $eventName) {
             return;
         }
 
@@ -251,7 +252,7 @@ final class OutlineTableListener implements EventListener
     private function getStepTestResults()
     {
         return array_map(
-            function (AfterStepTested $event) {
+            function (AfterStepTestedWithOutput $event) {
                 return $event->getTestResult();
             },
             $this->stepAfterTestedEvents

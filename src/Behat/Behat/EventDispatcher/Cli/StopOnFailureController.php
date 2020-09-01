@@ -10,7 +10,7 @@
 
 namespace Behat\Behat\EventDispatcher\Cli;
 
-use Behat\Behat\EventDispatcher\Event\EnvironmentAfterTested;
+use Behat\Behat\EventDispatcher\Event\AfterScenarioLikeTested;
 use Behat\Behat\EventDispatcher\Event\ExampleTested;
 use Behat\Behat\EventDispatcher\Event\ScenarioTested;
 use Behat\Testwork\Cli\Controller;
@@ -93,9 +93,11 @@ final class StopOnFailureController implements Controller
     /**
      * Exits if scenario is a failure and if stopper is enabled.
      *
-     * @param EnvironmentAfterTested $event
+     * @param AfterScenarioLikeTested $event
+     *
+     * @internal
      */
-    public function exitOnFailure(EnvironmentAfterTested $event)
+    public function exitOnFailure(AfterScenarioLikeTested $event)
     {
         if (!$this->resultInterpretation->isFailure($event->getTestResult())) {
             return;

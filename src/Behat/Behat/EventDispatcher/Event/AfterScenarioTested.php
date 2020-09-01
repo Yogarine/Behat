@@ -21,7 +21,7 @@ use Behat\Testwork\Tester\Setup\Teardown;
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */
-final class AfterScenarioTested extends ScenarioTested implements EnvironmentAfterTested
+final class AfterScenarioTested extends ScenarioTested implements AfterScenarioLikeTested
 {
     /**
      * @var FeatureNode

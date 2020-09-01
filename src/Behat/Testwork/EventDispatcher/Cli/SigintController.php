@@ -61,6 +61,8 @@ final class SigintController implements Controller
 
     /**
      * Dispatches AFTER exercise event and exits program.
+     *
+     * @internal
      */
     public function abortExercise()
     {

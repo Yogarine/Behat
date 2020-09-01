@@ -11,7 +11,7 @@
 namespace Behat\Behat\Output\Node\EventListener\AST;
 
 use Behat\Behat\EventDispatcher\Event\AfterFeatureSetup;
-use Behat\Behat\EventDispatcher\Event\AfterFeatureTested;
+use Behat\Behat\EventDispatcher\Event\AfterFeatureTestedEvent;
 use Behat\Behat\EventDispatcher\Event\FeatureTested;
 use Behat\Behat\Output\Node\Printer\FeaturePrinter;
 use Behat\Behat\Output\Node\Printer\SetupPrinter;
@@ -84,7 +84,7 @@ final class FeatureListener implements EventListener
      */
     private function printFooterOnAfterEvent(Formatter $formatter, Event $event)
     {
-        if (!$event instanceof AfterFeatureTested) {
+        if (!$event instanceof AfterFeatureTestedEvent) {
             return;
         }
 

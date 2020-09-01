@@ -14,19 +14,21 @@ use Behat\Testwork\Environment\Environment;
 use Behat\Testwork\Suite\Suite;
 
 /**
+ * Holds references to current suite and environment.
+ *
  * @author Alwin Garside <alwin@garsi.de>
  */
-interface EnvironmentReference
+interface LifecycleReference
 {
     /**
-     * Returns suite in which this event was fired.
+     * Returns suite.
      *
      * @return Suite
      */
     public function getSuite();
 
     /**
-     * Returns environment in which this event was fired.
+     * Returns environment.
      *
      * @return Environment
      */

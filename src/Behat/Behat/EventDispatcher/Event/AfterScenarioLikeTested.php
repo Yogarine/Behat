@@ -10,14 +10,11 @@
 
 namespace Behat\Behat\EventDispatcher\Event;
 
-
 use Behat\Testwork\EventDispatcher\Event\AfterTested;
-use Behat\Testwork\EventDispatcher\Event\EnvironmentReference;
 
 /**
  * @author Alwin Garside <alwin@garsi.de>
  */
-interface EnvironmentAfterTested extends EnvironmentReference, AfterTested
+interface AfterScenarioLikeTested extends ScenarioLikeTested, AfterTested
 {
-
 }

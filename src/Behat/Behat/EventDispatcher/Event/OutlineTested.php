@@ -20,7 +20,7 @@ use Behat\Testwork\EventDispatcher\Event\LifecycleEvent;
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */
-abstract class OutlineTested extends LifecycleEvent implements GherkinNodeTested
+abstract class OutlineTested extends LifecycleEvent implements OutlineEvent, GherkinNodeTested
 {
     public const BEFORE = 'tester.outline_tested.before';
     public const AFTER_SETUP = 'tester.outline_tested.after_setup';

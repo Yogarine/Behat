@@ -13,7 +13,6 @@ namespace Behat\Behat\EventDispatcher\Event;
 use Behat\Gherkin\Node\FeatureNode;
 use Behat\Gherkin\Node\StepNode;
 use Behat\Testwork\Environment\Environment;
-use Behat\Testwork\EventDispatcher\Event\AfterSetup;
 use Behat\Testwork\Tester\Setup\Setup;
 
 /**
@@ -21,7 +20,7 @@ use Behat\Testwork\Tester\Setup\Setup;
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */
-final class AfterStepSetup extends StepTested implements AfterSetup, StepEventWithOutput
+final class AfterStepSetup extends StepTested implements AfterStepSetupWithOutput
 {
     /**
      * @var FeatureNode

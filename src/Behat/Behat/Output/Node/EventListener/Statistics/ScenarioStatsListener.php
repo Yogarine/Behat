@@ -10,8 +10,8 @@
 
 namespace Behat\Behat\Output\Node\EventListener\Statistics;
 
-use Behat\Behat\EventDispatcher\Event\AfterFeatureTested;
-use Behat\Behat\EventDispatcher\Event\EnvironmentAfterTested;
+use Behat\Behat\EventDispatcher\Event\AfterFeatureTestedEvent;
+use Behat\Behat\EventDispatcher\Event\AfterScenarioLikeTested;
 use Behat\Behat\EventDispatcher\Event\BeforeFeatureTested;
 use Behat\Behat\Output\Statistics\ScenarioStat;
 use Behat\Behat\Output\Statistics\Statistics;
@@ -76,7 +76,7 @@ final class ScenarioStatsListener implements EventListener
      */
     private function forgetCurrentFeaturePathOnAfterFeatureEvent($event)
     {
-        if (!$event instanceof AfterFeatureTested) {
+        if (!$event instanceof AfterFeatureTestedEvent) {
             return;
         }
 
@@ -90,7 +90,7 @@ final class ScenarioStatsListener implements EventListener
      */
     private function captureScenarioOrExampleStatsOnAfterEvent(Event $event)
     {
-        if (!$event instanceof EnvironmentAfterTested) {
+        if (!$event instanceof AfterScenarioLikeTested) {
             return;
         }
 

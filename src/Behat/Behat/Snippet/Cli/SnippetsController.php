@@ -10,7 +10,7 @@
 
 namespace Behat\Behat\Snippet\Cli;
 
-use Behat\Behat\EventDispatcher\Event\AfterStepTested;
+use Behat\Behat\EventDispatcher\Event\AfterStepTestedWithOutput;
 use Behat\Behat\EventDispatcher\Event\StepTested;
 use Behat\Behat\Snippet\Printer\SnippetPrinter;
 use Behat\Behat\Snippet\SnippetRepository;
@@ -119,9 +119,11 @@ final class SnippetsController implements Controller
     /**
      * Registers undefined step.
      *
-     * @param AfterStepTested $event
+     * @param AfterStepTestedWithOutput $event
+     *
+     * @internal
      */
-    public function registerUndefinedStep(AfterStepTested $event)
+    public function registerUndefinedStep(AfterStepTestedWithOutput $event)
     {
         if (StepResult::UNDEFINED === $event->getTestResult()->getResultCode()) {
             $this->registry->registerUndefinedStep($event->getEnvironment(), $event->getStep());
@@ -130,6 +132,8 @@ final class SnippetsController implements Controller
 
     /**
      * Appends all snippets to corresponding targets.
+     *
+     * @internal
      */
     public function appendAllSnippets()
     {
@@ -141,6 +145,8 @@ final class SnippetsController implements Controller
 
     /**
      * Prints all snippets.
+     *
+     * @internal
      */
     public function printAllSnippets()
     {
@@ -152,6 +158,8 @@ final class SnippetsController implements Controller
 
     /**
      * Prints all undefined steps.
+     *
+     * @internal
      */
     public function printUndefinedSteps()
     {

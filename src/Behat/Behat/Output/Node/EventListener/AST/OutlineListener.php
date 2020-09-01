@@ -11,10 +11,10 @@
 namespace Behat\Behat\Output\Node\EventListener\AST;
 
 use Behat\Behat\EventDispatcher\Event\AfterOutlineTested;
+use Behat\Behat\EventDispatcher\Event\AfterScenarioLikeTested;
 use Behat\Behat\EventDispatcher\Event\AfterScenarioSetup;
-use Behat\Behat\EventDispatcher\Event\EnvironmentAfterTested;
-use Behat\Behat\EventDispatcher\Event\AfterStepSetup;
-use Behat\Behat\EventDispatcher\Event\AfterStepTested;
+use Behat\Behat\EventDispatcher\Event\AfterStepSetupWithOutput;
+use Behat\Behat\EventDispatcher\Event\AfterStepTestedWithOutput;
 use Behat\Behat\EventDispatcher\Event\BeforeOutlineTested;
 use Behat\Behat\EventDispatcher\Event\ExampleTested;
 use Behat\Behat\Output\Node\Printer\ExamplePrinter;
@@ -151,7 +151,7 @@ final class OutlineListener implements EventListener
      */
     private function printExampleFooterOnAfterExampleEvent(Formatter $formatter, Event $event, $eventName)
     {
-        if (!$event instanceof EnvironmentAfterTested || ExampleTested::AFTER !== $eventName) {
+        if (!$event instanceof AfterScenarioLikeTested || ExampleTested::AFTER !== $eventName) {
             return;
         }
 
@@ -169,7 +169,7 @@ final class OutlineListener implements EventListener
      */
     private function printStepSetupOnBeforeStepEvent(Formatter $formatter, Event $event)
     {
-        if (!$event instanceof AfterStepSetup) {
+        if (!$event instanceof AfterStepSetupWithOutput) {
             return;
         }
 
@@ -184,7 +184,7 @@ final class OutlineListener implements EventListener
      */
     private function printStepOnAfterStepEvent(Formatter $formatter, Event $event)
     {
-        if (!$event instanceof AfterStepTested) {
+        if (!$event instanceof AfterStepTestedWithOutput) {
             return;
         }
 

@@ -20,7 +20,7 @@ use Behat\Testwork\EventDispatcher\Event\BeforeTested;
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */
-final class BeforeOutlineTested extends OutlineTested implements BeforeTested
+final class BeforeOutlineTested extends OutlineTested implements BeforeOutlineEvent, BeforeTested
 {
     /**
      * @var FeatureNode
