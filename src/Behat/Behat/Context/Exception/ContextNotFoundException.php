@@ -17,7 +17,7 @@ use InvalidArgumentException;
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */
-final class ContextNotFoundException extends InvalidArgumentException implements ContextException
+final class ContextNotFoundException extends InvalidArgumentException implements ContextClassException
 {
     /**
      * @var string
