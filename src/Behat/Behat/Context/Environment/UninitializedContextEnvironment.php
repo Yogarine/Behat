@@ -22,7 +22,7 @@ use Behat\Testwork\Environment\StaticEnvironment;
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */
-final class UninitializedContextEnvironment extends StaticEnvironment implements ContextEnvironment
+final class UninitializedContextEnvironment extends StaticEnvironment implements ContextClassEnvironment
 {
     /**
      * @var array[]
