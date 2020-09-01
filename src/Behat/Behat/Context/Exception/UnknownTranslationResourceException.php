@@ -17,7 +17,7 @@ use InvalidArgumentException;
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */
-final class UnknownTranslationResourceException extends InvalidArgumentException implements ContextException
+final class UnknownTranslationResourceException extends InvalidArgumentException implements ContextResourceException
 {
     /**
      * @var string
